@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>DS3 PVE Cheat Sheet</title>
+<style>
+:root {
+  --bg: #10110f;
+  --bg-2: #171915;
+  --panel: rgba(27, 30, 28, 0.93);
+  --panel-strong: rgba(34, 37, 34, 0.97);
+  --line: rgba(214, 191, 145, 0.18);
+  --line-soft: rgba(238, 232, 219, 0.09);
+  --text: #ece9df;
+  --muted: #b5b0a5;
+  --dim: #807c73;
+  --shadow: rgba(0, 0, 0, 0.34);
+  --c-top-shelf: #c7a45e;
+  --c-neutral: #a7a49c;
+  --c-quality: #75a2b0;
+  --c-strength: #c16f58;
+  --c-dexterity: #78a978;
+  --c-sorcery: #8795bf;
+  --c-faith: #ccb95f;
+  --c-pyromancy-dark: #b97892;
+  --c-luck-bleed: #c76470;
+  --c-armor: #aba9a1;
+  --c-consumables: #91a66f;
+  --c-caps: #b86a36;
+}
+
+* { box-sizing: border-box; }
+
+html { min-height: 100%; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(199, 164, 94, 0.11), transparent 26rem),
+    radial-gradient(circle at 92% 12%, rgba(117, 162, 176, 0.08), transparent 28rem),
+    linear-gradient(180deg, var(--bg), var(--bg-2) 64%, #0c0d0b);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+.board {
+  width: min(1760px, 100%);
+  margin: 0 auto;
+  padding: clamp(10px, 1.7vw, 24px);
+  padding-bottom: 82px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: 8px;
+  align-items: start;
+}
+
+.masthead {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 2px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+h1, h2, h3, p, dl, dd { margin: 0; }
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2.4vw, 2.45rem);
+  line-height: 0.98;
+  font-weight: 700;
+  color: #f0dfb7;
+  text-shadow: 0 1px 0 #000, 0 0 18px rgba(199, 164, 94, 0.14);
+}
+
+.search-wrap {
+  position: relative;
+  flex: 0 1 320px;
+}
+
+.search-wrap::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--c-top-shelf);
+  border-radius: 50%;
+  transform: translateY(-55%);
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+.search-wrap::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: calc(50% + 5px);
+  width: 7px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--c-top-shelf);
+  transform: rotate(45deg);
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+.drop-search {
+  width: 100%;
+  min-width: min(320px, 100%);
+  height: 36px;
+  border: 1px solid rgba(199, 164, 94, 0.36);
+  border-radius: 8px;
+  padding: 0 12px 0 39px;
+  color: var(--text);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent),
+    rgba(19, 20, 18, 0.86);
+  box-shadow: inset 0 1px 0 rgba(255, 236, 181, 0.07), 0 8px 18px rgba(0,0,0,0.18);
+  font: 650 0.78rem/1 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.drop-search::placeholder {
+  color: color-mix(in srgb, var(--c-top-shelf) 72%, var(--muted));
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  opacity: 0.8;
+}
+
+.drop-search:focus {
+  outline: 2px solid color-mix(in srgb, var(--c-top-shelf) 62%, white);
+  outline-offset: 2px;
+  border-color: rgba(199, 164, 94, 0.68);
+}
+
+.search-status {
+  grid-column: 1 / -1;
+  display: none;
+  margin-top: -2px;
+  padding: 2px 1px 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.25;
+}
+
+.search-status strong {
+  color: var(--c-top-shelf);
+  font-weight: 780;
+}
+
+.searching .search-status {
+  display: block;
+}
+
+.search-hidden {
+  display: none !important;
+}
+
+.feature-stack {
+  min-width: 0;
+  align-self: start;
+  display: grid;
+  gap: 8px;
+}
+
+.top-shelf {
+  --accent: var(--c-top-shelf);
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid rgba(199, 164, 94, 0.62);
+  border-left: 4px solid var(--c-top-shelf);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(199, 164, 94, 0.15), rgba(199, 164, 94, 0.035) 42%, rgba(255,255,255,0.02)),
+    rgba(31, 28, 22, 0.93);
+  box-shadow: 0 12px 30px var(--shadow), inset 0 1px 0 rgba(255, 236, 181, 0.08);
+  cursor: pointer;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.section-title::before {
+  content: "";
+  width: 5px;
+  height: 20px;
+  border-radius: 99px;
+  background: var(--c-top-shelf);
+  box-shadow: 0 0 16px rgba(199, 164, 94, 0.34);
+}
+
+.section-title h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+  color: #ead49b;
+}
+
+.top-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(132px, 100%), 1fr));
+  gap: 7px 12px;
+}
+
+.top-group, .group {
+  min-width: 0;
+}
+
+.top-group h3, .group h3 {
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-group ul, .group ul {
+  display: grid;
+  gap: 1px;
+}
+
+.item {
+  position: relative;
+  padding: 1px 0;
+  color: var(--text);
+  font-size: 0.82rem;
+  line-height: 1.17;
+  overflow-wrap: anywhere;
+}
+
+.item::before {
+  content: none;
+}
+
+.use-accent { color: var(--accent); }
+.style-top-shelf { color: var(--c-top-shelf); }
+.top-shelf .item {
+  font-weight: 760;
+}
+.top-shelf .style-top-shelf {
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(199, 164, 94, 0.45), 0 0 2px rgba(255, 239, 196, 0.45);
+}
+.board-card .top-pick-match {
+  color: var(--c-top-shelf);
+  font-weight: inherit;
+  text-shadow: 0 0 10px rgba(199, 164, 94, 0.42), 0 0 2px rgba(255, 239, 196, 0.38);
+}
+.style-neutral { color: var(--c-neutral); }
+.style-quality { color: var(--c-quality); }
+.style-strength { color: var(--c-strength); }
+.style-dexterity { color: var(--c-dexterity); }
+.style-sorcery { color: var(--c-sorcery); }
+.style-faith { color: var(--c-faith); }
+.style-pyromancy-dark { color: var(--c-pyromancy-dark); }
+.style-luck-bleed { color: var(--c-luck-bleed); }
+.style-armor { color: var(--c-armor); }
+.style-consumables { color: var(--c-consumables); }
+
+.main-grid {
+  display: contents;
+}
+
+.board-card {
+  --accent: var(--c-neutral);
+  min-width: 0;
+  align-self: start;
+  padding: 10px;
+  border: 1px solid var(--line-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.032), transparent 26%),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent 54%),
+    var(--panel);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.035);
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease, background-color 140ms ease;
+}
+
+.board-card:hover, .top-shelf:hover {
+  border-color: color-mix(in srgb, var(--accent) 56%, var(--line-soft));
+  transform: translateY(-1px);
+}
+
+.board-card:focus-visible, .top-shelf:focus-visible, .dock-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 72%, white);
+  outline-offset: 2px;
+}
+
+.card-head {
+  margin-bottom: 8px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.card-head h2 {
+  color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.card-desc {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.22;
+}
+
+.card-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(118px, 100%), 1fr));
+  gap: 8px 10px;
+  align-items: start;
+}
+
+.lower-board {
+  display: contents;
+}
+
+.compact-card .card-groups {
+  grid-template-columns: repeat(auto-fit, minmax(min(136px, 100%), 1fr));
+  gap: 8px 10px;
+}
+
+.neutral-card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.028), transparent 28%),
+    linear-gradient(90deg, rgba(167, 164, 156, 0.10), transparent 48%),
+    var(--panel);
+}
+
+.caps-card {
+  --accent: var(--c-caps);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.028), transparent 28%),
+    linear-gradient(90deg, rgba(184, 106, 54, 0.11), transparent 52%),
+    var(--panel);
+}
+
+.caps-card .card-head {
+  margin-bottom: 8px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid color-mix(in srgb, var(--c-caps) 28%, var(--line-soft));
+}
+
+.caps-card .card-head::before {
+  content: none;
+}
+
+.caps-card .card-head h2 {
+  color: var(--c-caps);
+  font-size: 1rem;
+}
+
+.caps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.cap-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 7px;
+  border: 1px solid rgba(238, 232, 219, 0.07);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.cap-label {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cap-label small {
+  color: var(--dim);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.cap-value {
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 720;
+  white-space: nowrap;
+}
+
+.cap-note {
+  grid-column: 1 / -1;
+  margin-top: 2px;
+  padding: 7px;
+  border-top: 1px solid rgba(238, 232, 219, 0.08);
+}
+
+.cap-note h3 {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.cap-note p {
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.25;
+}
+
+.collapse-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  z-index: 20;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 24px);
+}
+
+.collapse-dock[hidden] {
+  display: none;
+}
+
+.dock-track {
+  display: flex;
+  gap: 6px;
+  max-width: min(980px, calc(100vw - 24px));
+  overflow-x: auto;
+  padding: 7px;
+  border: 1px solid rgba(238, 232, 219, 0.16);
+  border-radius: 8px;
+  background: rgba(19, 20, 18, 0.94);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.36);
+}
+
+.dock-button {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 34px;
+  border: 1px solid color-mix(in srgb, var(--accent) 58%, rgba(238, 232, 219, 0.16));
+  border-radius: 7px;
+  color: var(--text);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 24%, transparent), transparent),
+    rgba(37, 39, 35, 0.96);
+  font: 750 0.66rem/1 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+@media (min-width: 780px) {
+  .feature-stack {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .masthead {
+    display: block;
+  }
+
+  .search-wrap {
+    margin-top: 8px;
+  }
+
+  .drop-search { min-width: 0; }
+
+  .board { padding: 14px; }
+  .top-shelf, .board-card { border-radius: 8px; }
+  .caps-grid { grid-template-columns: 1fr; }
+  .cap-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .cap-value { white-space: normal; }
+}
+
+@media print {
+  body { background: #08090d; }
+  .board { width: 100%; padding: 12px; display: block; }
+  .board-card, .top-shelf { box-shadow: none; break-inside: avoid; margin-bottom: 8px; }
+  .collapse-dock { display: none !important; }
+}
+  </style>
+</head>
+<body>
+<main class="board">
+<header class="masthead">
+<h1>DS3 PVE Cheat Sheet</h1>
+<label aria-label="Search drops" class="search-wrap">
+<input autocomplete="off" class="drop-search" placeholder="Should I keep this?" spellcheck="false" type="search"/>
+</label>
+</header>
+<p aria-live="polite" class="search-status"></p>
+<div class="feature-stack">
+<section aria-labelledby="top-shelf-title" class="top-shelf">
+<div class="section-title"><h2 id="top-shelf-title">Top Shelf Picks</h2></div>
+<div class="top-grid">
+<div class="top-group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-dexterity">Sellsword Twinblades</li><li class="item style-top-shelf">Lothric Knight Sword</li><li class="item style-strength">Exile Greatsword</li><li class="item style-strength">Dragonslayer Greataxe</li><li class="item style-top-shelf">Lothric Knight Greatsword</li><li class="item style-quality">Black Knight Sword</li><li class="item style-pyromancy-dark">Demon's Scar</li><li class="item style-sorcery">Moonlight Greatsword</li><li class="item style-faith">Sunlight Straight Sword</li>
+<li class="item style-top-shelf">Splitleaf Greatsword</li><li class="item style-top-shelf">Gael's Greatsword</li><li class="item style-top-shelf">Storyteller's Staff</li><li class="item style-top-shelf">Lothric War Banner</li></ul>
+</div>
+<div class="top-group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-neutral">Ring of Favor +3</li><li class="item style-neutral">Prisoner's Chain</li><li class="item style-neutral">Chloranthy Ring +3</li><li class="item style-neutral">Lloyd's Sword Ring</li><li class="item style-dexterity">Pontiff's Right Eye</li><li class="item style-top-shelf">Sage Ring +2</li>
+</ul>
+</div>
+<div class="top-group">
+<h3>Shields</h3>
+<ul>
+<li class="item style-neutral">Black Knight Shield</li><li class="item style-neutral">Lothric Knight Shield</li><li class="item style-strength">Havel's Greatshield</li>
+<li class="item style-neutral">Ethereal Oak Shield</li></ul>
+</div>
+<div class="top-group">
+<h3>Armor</h3>
+<ul>
+<li class="item style-armor">Lapp's Set</li><li class="item style-armor">Black Iron Set</li><li class="item style-armor">Winged Knight Set</li>
+</ul>
+</div>
+<div class="top-group">
+<h3>Consumables</h3>
+<ul>
+<li class="item style-consumables">Gold Pine Bundle</li><li class="item style-consumables">Human Pine Resin</li><li class="item style-consumables">Carthus Rouge</li>
+<li class="item style-consumables">Rusted Gold Coin</li><li class="item style-consumables">Green Blossom</li><li class="item style-consumables">Budding Green Blossom</li></ul>
+</div>
+<div class="top-group"><h3>Utility / Farm</h3><ul><li class="item style-consumables">Coiled Sword Fragment</li><li class="item style-consumables">Symbol of Avarice</li><li class="item style-consumables">Covetous Gold Serpent Ring +3</li><li class="item style-consumables">Crystal Sage's Rapier</li><li class="item style-consumables">Shield of Want</li></ul></div></div>
+</section>
+<section class="board-card compact-card caps-card" style="--accent: var(--c-caps);" aria-labelledby="caps-title">
+        <header class="card-head">
+          <h2 id="caps-title">Attribute Caps</h2>
+        </header>
+        <div class="caps-grid">
+          <div class="cap-row">
+            <span class="cap-label">Vigor <small>(HP)</small></span>
+            <span class="cap-value">27 → 40 → 50</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Attunement <small>(FP)</small></span>
+            <span class="cap-value">24 → 30 → 35</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Endurance <small>(STA)</small></span>
+            <span class="cap-value">→ 40</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Vitality <small>(EQP)</small></span>
+            <span class="cap-value">40 → 99</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Strength <small>(STR)</small></span>
+            <span class="cap-value">40 → 60 → 80</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Strength 2H <small>(STR x 1.5)</small></span>
+            <span class="cap-value">27 → 66</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Dexterity <small>(DEX)</small></span>
+            <span class="cap-value">40 → 60 → 80</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Casting Speed <small>(DEX)</small></span>
+            <span class="cap-value">→ 50</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Intelligence <small>(INT)</small></span>
+            <span class="cap-value">&nbsp;&nbsp;&nbsp;Casting 60</span>
+            <span class="cap-label">Faith <small>(FTH)</small></span>
+            <span class="cap-value">Weapons 40</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Pyromancy <small>(INT + FTH)</small></span>
+            <span class="cap-value">&nbsp;&nbsp;&nbsp;Casting 40</span>
+            <span class="cap-label"><small>and</small> Dark <small>(INT + FTH)</small></span>
+            <span class="cap-value">Weapons 30</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Luck <small>(LCK)</small></span>
+            <span class="cap-value">Bleed/Hollow 40 → 45</span>
+          </div>
+          <div class="cap-row">
+            <span class="cap-label">Item Discovery <small>(LCK)</small></span>
+            <span class="cap-value">→ 99</span>
+          </div>
+          <div class="cap-note">
+            <h3>Reminders</h3>
+            <p>Simple infused offhand gives passive FP regen.</p>
+            <p>Blessed infused offhand and Ethereal Oak Shield give passive HP regen.</p>
+            <p>Gain another Slot at these Attunement levels: 10, 14, 18, 24, 30, 40, 50, 60, 80, 99</p>
+            <p>Sage Ring +2 adds 40 to your casting speed Dexterity.</p>
+          </div>
+        </div>
+      </section>
+</div>
+<section aria-label="Build and category columns" class="main-grid">
+<article class="board-card" style="--accent: var(--c-quality);">
+<header class="card-head">
+<h2>Quality Knight</h2>
+<p class="card-desc">Flexible melee lane for straight swords, greatswords, and boss weapons that stay strong across most PvE fights.</p>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-quality">Lothric Knight Sword</li><li class="item style-quality">Black Knight Sword</li><li class="item style-quality">Claymore</li><li class="item style-quality">Hollowslayer Greatsword</li><li class="item style-quality">Wolf Knight's Greatsword</li><li class="item style-quality">Farron Greatsword</li><li class="item style-quality">Profaned Greatsword</li><li class="item style-quality">Ringed Knight Straight Sword</li><li class="item style-quality">Gotthard Twinswords</li>
+<li class="item style-quality">Gael's Greatsword</li><li class="item style-quality">Ringed Knight Paired Greatswords</li></ul>
+</div>
+<div class="group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-quality">Leo Ring</li><li class="item style-quality">Hornet Ring</li><li class="item style-quality">Lloyd's Sword Ring</li>
+</ul>
+</div>
+<div class="group">
+<h3>Extras</h3>
+<ul>
+
+<li class="item style-quality">Lothric War Banner</li><li class="item style-quality">Pontiff Knight Curved Sword</li></ul>
+</div>
+</div>
+</article>
+<article class="board-card" style="--accent: var(--c-strength);">
+<header class="card-head">
+<h2>Strength Bonk</h2>
+<p class="card-desc">Slow heavy hits, stagger pressure, trades, and shield-friendly tank play.</p>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-strength">Exile Greatsword</li><li class="item style-strength">Great Club</li><li class="item style-strength">Vordt's Great Hammer</li><li class="item style-strength">Yhorm's Great Machete</li><li class="item style-strength">Dragonslayer Greataxe</li><li class="item style-strength">Fume Ultra Greatsword</li><li class="item style-strength">Ledo's Great Hammer</li><li class="item style-strength">Cathedral Knight Greatsword</li><li class="item style-strength">Black Knight Greataxe</li><li class="item style-strength">Great Mace</li>
+<li class="item style-strength">Splitleaf Greatsword</li><li class="item style-strength">Millwood Battle Axe</li><li class="item style-strength">Greatsword</li></ul>
+</div>
+<div class="group">
+<h3>Shields</h3>
+<ul>
+<li class="item style-strength">Black Knight Shield</li><li class="item style-strength">Cathedral Knight Greatshield</li><li class="item style-strength">Lothric Knight Greatshield</li><li class="item style-strength">Black Iron Greatshield</li><li class="item style-strength">Havel's Greatshield</li><li class="item style-strength">Greatshield of Glory</li>
+<li class="item style-strength">Moaning Shield</li><li class="item style-strength">Dragonslayer Greatshield</li></ul>
+</div>
+<div class="group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-strength">Knight's Ring</li><li class="item style-strength">Havel's Ring +3</li><li class="item style-strength">Ring of Steel Protection +3</li>
+</ul>
+</div>
+</div>
+</article>
+<article class="board-card" style="--accent: var(--c-dexterity);">
+<header class="card-head">
+<h2>Dexterity DPS</h2>
+<p class="card-desc">Fast multi-hit weapons that stack buffs and shred bosses through repeated pressure.</p>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-dexterity">Sellsword Twinblades</li><li class="item style-dexterity">Warden Twinblades</li><li class="item style-dexterity">Onikiri and Ubadachi</li><li class="item style-dexterity">Washing Pole</li><li class="item style-dexterity">Chaos Blade</li><li class="item style-dexterity">Astora Greatsword</li><li class="item style-dexterity">Lothric Knight Greatsword</li><li class="item style-dexterity">Crow Quills</li><li class="item style-dexterity">Frayed Blade</li><li class="item style-dexterity">Great Corvian Scythe</li>
+<li class="item style-dexterity">Murakumo</li><li class="item style-dexterity">Sharp Lothric Knight Sword</li><li class="item style-dexterity">Pontiff Knight Curved Sword</li></ul>
+</div>
+<div class="group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-dexterity">Pontiff's Right Eye</li><li class="item style-dexterity">Hunter's Ring</li><li class="item style-dexterity">Lloyd's Sword Ring</li>
+<li class="item style-dexterity">Pontiff's Left Eye</li><li class="item style-dexterity">Carthus Milkring</li></ul>
+</div>
+<div class="group">
+<h3>Extras</h3>
+<ul>
+
+<li class="item style-dexterity">Old Wolf Curved Sword</li></ul>
+</div>
+</div>
+</article>
+<article class="board-card" style="--accent: var(--c-sorcery);">
+<header class="card-head">
+<h2>Intelligence Sorcery</h2>
+<p class="card-desc">Ranged spell damage with a light backup weapon and caster gear for safe boss control.</p>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-sorcery">Moonlight Greatsword</li><li class="item style-sorcery">Greatsword of Judgment</li><li class="item style-sorcery">Crystal Sage's Rapier</li><li class="item style-sorcery">Heysel Pick</li><li class="item style-sorcery">Immolation Tinder</li>
+<li class="item style-sorcery">Friede's Great Scythe</li><li class="item style-sorcery">Crystal Lothric Knight Sword</li></ul>
+</div>
+<div class="group">
+<h3>Catalysts</h3>
+<ul>
+<li class="item style-sorcery">Court Sorcerer's Staff</li><li class="item style-sorcery">Sage's Crystal Staff</li><li class="item style-sorcery">Heretic's Staff</li><li class="item style-sorcery">Izalith Staff</li>
+</ul>
+</div>
+<div class="group">
+<h3>Spells</h3>
+<ul>
+<li class="item style-sorcery">Great Heavy Soul Arrow</li><li class="item style-sorcery">Crystal Soul Spear</li><li class="item style-sorcery">Homing Crystal Soulmass</li><li class="item style-sorcery">Soul Stream</li><li class="item style-sorcery">Pestilent Mist</li><li class="item style-sorcery">Hidden Body</li>
+<li class="item style-sorcery">Great Soul Dregs</li></ul>
+</div>
+<div class="group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-sorcery">Young Dragon Ring</li><li class="item style-sorcery">Bellowing Dragoncrest Ring</li><li class="item style-sorcery">Magic Clutch Ring</li><li class="item style-sorcery">Sage Ring +2</li>
+</ul>
+</div>
+<div class="group">
+<h3>Extras</h3>
+<ul>
+<li class="item style-sorcery">Scholar's Candlestick</li><li class="item style-sorcery">Crown of Dusk</li>
+<li class="item style-sorcery">Murky Longstaff</li></ul>
+</div>
+</div>
+</article>
+<article class="board-card" style="--accent: var(--c-faith);">
+<header class="card-head">
+<h2>Faith Lightning</h2>
+<p class="card-desc">Buffed melee, close-range lightning casts, sustain, and emergency survival tools.</p>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-faith">Sunlight Straight Sword</li><li class="item style-faith">Dragonslayer Swordspear</li><li class="item style-faith">Dragonslayer Spear</li><li class="item style-faith">Lothric Knight Greatsword</li><li class="item style-faith">Saint Bident</li><li class="item style-faith">Crucifix of the Mad King</li><li class="item style-faith">Wolnir's Holy Sword</li>
+<li class="item style-faith">Lightning Lothric Knight Sword</li><li class="item style-faith">Rose of Ariandel</li><li class="item style-faith">Lothric War Banner</li></ul>
+</div>
+<div class="group">
+<h3>Catalysts</h3>
+<ul>
+<li class="item style-faith">Yorshka's Chime</li><li class="item style-faith">Canvas Talisman</li><li class="item style-faith">Saint's Talisman</li><li class="item style-faith">Sunless Talisman</li><li class="item style-faith">Sacred Chime of Filianore</li>
+</ul>
+</div>
+<div class="group">
+<h3>Miracles</h3>
+<ul>
+<li class="item style-faith">Lightning Blade</li><li class="item style-faith">Darkmoon Blade</li><li class="item style-faith">Sunlight Spear</li><li class="item style-faith">Lightning Stake</li><li class="item style-faith">Lightning Arrow</li><li class="item style-faith">Dorhys' Gnawing</li><li class="item style-faith">Tears of Denial</li><li class="item style-faith">Sacred Oath</li>
+<li class="item style-faith">Lightning Storm</li><li class="item style-faith">Bountiful Light</li></ul>
+</div>
+<div class="group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-faith">Morne's Ring</li><li class="item style-faith">Ring of the Sun's First Born</li><li class="item style-faith">Lightning Clutch Ring</li><li class="item style-faith">Priestess Ring</li><li class="item style-faith">Sun Princess Ring</li>
+</ul>
+</div>
+<div class="group">
+<h3>Extras</h3>
+<ul>
+
+<li class="item style-faith">Ethereal Oak Shield</li></ul>
+</div>
+</div>
+</article>
+<article class="board-card" style="--accent: var(--c-pyromancy-dark);">
+<header class="card-head">
+<h2>Pyromancy / Dark</h2>
+<p class="card-desc">Fire and dark damage coverage with chaos/dark weapons for enemies that resist one element.</p>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-pyromancy-dark">Demon's Scar</li><li class="item style-pyromancy-dark">Onyx Blade</li><li class="item style-pyromancy-dark">Witch's Locks</li><li class="item style-pyromancy-dark">Chaos Lothric Knight Sword</li><li class="item style-pyromancy-dark">Dark Lothric Knight Sword</li><li class="item style-pyromancy-dark">Chaos Dagger</li><li class="item style-pyromancy-dark">Dark Claymore</li><li class="item style-pyromancy-dark">Crucifix of the Mad King</li>
+<li class="item style-pyromancy-dark">Murky Hand Scythe</li><li class="item style-pyromancy-dark">Dark Astora Greatsword</li><li class="item style-pyromancy-dark">Dark Murakumo</li></ul>
+</div>
+<div class="group">
+<h3>Catalysts</h3>
+<ul>
+<li class="item style-pyromancy-dark">Pyromancy Flame</li><li class="item style-pyromancy-dark">Pyromancer's Parting Flame</li><li class="item style-pyromancy-dark">White Hair Talisman</li>
+<li class="item style-pyromancy-dark">Izalith Staff</li><li class="item style-pyromancy-dark">Murky Longstaff</li><li class="item style-pyromancy-dark">Caitha's Chime</li></ul>
+</div>
+<div class="group">
+<h3>Pyromancies</h3>
+<ul>
+<li class="item style-pyromancy-dark">Great Chaos Fire Orb</li><li class="item style-pyromancy-dark">Chaos Bed Vestiges</li><li class="item style-pyromancy-dark">Black Fire Orb</li><li class="item style-pyromancy-dark">Black Flame</li><li class="item style-pyromancy-dark">Profaned Flame</li><li class="item style-pyromancy-dark">Rapport</li><li class="item style-pyromancy-dark">Carthus Flame Arc</li>
+<li class="item style-pyromancy-dark">Black Serpent</li><li class="item style-pyromancy-dark">Seething Chaos</li></ul>
+</div>
+<div class="group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-pyromancy-dark">Great Swamp Ring</li><li class="item style-pyromancy-dark">Witch's Ring</li><li class="item style-pyromancy-dark">Fire Clutch Ring</li><li class="item style-pyromancy-dark">Dark Clutch Ring</li><li class="item style-pyromancy-dark">Sage Ring +2</li>
+</ul>
+</div>
+<div class="group">
+<h3>Extras</h3>
+<ul>
+
+<li class="item style-pyromancy-dark">Blindfold Mask</li></ul>
+</div>
+<div class="group"><h3>Dark Spells</h3><ul><li class="item style-pyromancy-dark">Great Soul Dregs</li><li class="item style-pyromancy-dark">Affinity</li><li class="item style-pyromancy-dark">Dark Edge</li><li class="item style-pyromancy-dark">Lifehunt Scythe</li></ul></div></div>
+</article>
+<article class="board-card" style="--accent: var(--c-luck-bleed);">
+<header class="card-head">
+<h2>Luck / Bleed / Hollow</h2>
+<p class="card-desc">Status pressure with bleed, hollow scaling, and fast weapons that reward repeated hits.</p>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Weapons</h3>
+<ul>
+<li class="item style-luck-bleed">Anri's Straight Sword</li><li class="item style-luck-bleed">Hollow Warden Twinblades</li><li class="item style-luck-bleed">Hollow Carthus Curved Sword</li><li class="item style-luck-bleed">Bandit's Knife</li><li class="item style-luck-bleed">Barbed Straight Sword</li><li class="item style-luck-bleed">Great Corvian Scythe</li><li class="item style-luck-bleed">Onikiri and Ubadachi</li><li class="item style-luck-bleed">Hollow Sellsword Twinblades</li><li class="item style-luck-bleed">Man-Grub's Staff</li>
+<li class="item style-luck-bleed">Storyteller's Staff</li><li class="item style-luck-bleed">Bloodlust</li><li class="item style-luck-bleed">Notched Whip</li><li class="item style-luck-bleed">Spiked Mace</li></ul>
+</div>
+<div class="group">
+<h3>Rings</h3>
+<ul>
+<li class="item style-luck-bleed">Carthus Milkring</li><li class="item style-luck-bleed">Pontiff's Right Eye</li><li class="item style-luck-bleed">Bloodbite Ring</li>
+</ul>
+</div>
+</article>
+<article class="board-card armor-card" style="--accent: var(--c-armor);">
+<header class="card-head">
+<h2>Armor</h2>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Heavy Sets</h3>
+<ul>
+<li class="item style-armor">Lapp's Set</li><li class="item style-armor">Havel's Set</li><li class="item style-armor">Black Iron Set</li><li class="item style-armor">Gundyr's Set</li><li class="item style-armor">Winged Knight Set</li><li class="item style-armor">Cathedral Knight Set</li><li class="item style-armor">Morne's Set</li>
+</ul>
+</div>
+<div class="group">
+<h3>Medium Sets</h3>
+<ul>
+<li class="item style-armor">Black Knight Set</li><li class="item style-armor">Millwood Knight Set</li><li class="item style-armor">Exile Set</li><li class="item style-armor">Dragonslayer Set</li><li class="item style-armor">Vilhelm's Set</li><li class="item style-armor">Alva Set</li><li class="item style-armor">Firelink Set</li>
+</ul>
+</div>
+<div class="group">
+<h3>Light / Utility Sets</h3>
+<ul>
+<li class="item style-armor">Dancer Set</li><li class="item style-armor">Fallen Knight Set</li><li class="item style-armor">Crown of Dusk</li><li class="item style-armor">Symbol of Avarice</li>
+<li class="item style-armor">Blindfold Mask</li><li class="item style-armor">Desert Pyromancer Hood</li></ul>
+</div>
+</div>
+</article>
+</section>
+<section aria-label="Lower utility sections" class="lower-board">
+<article class="board-card compact-card neutral-card" style="--accent: var(--c-neutral);">
+<header class="card-head">
+<h2>Items/Rings</h2>
+</header>
+<div class="card-groups">
+<div class="group">
+<h3>Core Rings</h3>
+<ul>
+
+<li class="item style-neutral">Ring of the Evil Eye +3</li><li class="item style-neutral">Sun Princess Ring</li></ul>
+</div>
+<div class="group">
+<h3>Damage Rings</h3>
+<ul>
+<li class="item style-neutral">Lloyd's Sword Ring</li><li class="item style-neutral">Lloyd's Shield Ring</li><li class="item style-neutral">Hornet Ring</li><li class="item style-neutral">Red Tearstone Ring</li><li class="item style-neutral">Flynn's Ring</li><li class="item style-neutral">Knight Slayer's Ring</li>
+<li class="item style-neutral">Pontiff's Right Eye</li><li class="item style-neutral">Pontiff's Left Eye</li><li class="item style-neutral">Morne's Ring</li><li class="item style-neutral">Ring of the Sun's First Born</li><li class="item style-neutral">Magic Clutch Ring</li><li class="item style-neutral">Lightning Clutch Ring</li><li class="item style-neutral">Fire Clutch Ring</li><li class="item style-neutral">Dark Clutch Ring</li></ul>
+</div>
+<div class="group">
+<h3>Utility Rings</h3>
+<ul>
+<li class="item style-neutral">Covetous Gold Serpent Ring +3</li>
+<li class="item style-neutral">Sage Ring +2</li><li class="item style-neutral">Priestess Ring</li><li class="item style-neutral">Knight's Ring</li><li class="item style-neutral">Hunter's Ring</li></ul>
+</div>
+</article>
+<article class="board-card compact-card" style="--accent: var(--c-consumables);"><header class="card-head"><h2>Upgrade / Infusion</h2></header><div class="card-groups"><div class="group"><h3>Core Materials</h3><ul><li class="item style-consumables">Titanite Slab</li><li class="item style-consumables">Titanite Scale</li><li class="item style-consumables">Twinkling Titanite</li></ul></div><div class="group"><h3>Utility Materials</h3><ul><li class="item style-consumables">Undead Bone Shard</li><li class="item style-consumables">Estus Shard</li></ul></div></div></article></section>
+<nav aria-label="Collapsed sections" class="collapse-dock" hidden="">
+<div class="dock-track"></div>
+</nav>
+</main>
+<script>
+(() => {
+  const board = document.querySelector(".board");
+  const searchInput = document.querySelector(".drop-search");
+  const searchStatus = document.querySelector(".search-status");
+  const featureStack = document.querySelector(".feature-stack");
+  const dock = document.querySelector(".collapse-dock");
+  const dockTrack = dock.querySelector(".dock-track");
+  const cards = Array.from(document.querySelectorAll(".top-shelf, .board-card"));
+  const featureCards = Array.from(featureStack.querySelectorAll(".top-shelf, .board-card"));
+  const topShelfItems = new Set(
+    Array.from(document.querySelectorAll(".top-shelf .item"), (item) => item.textContent.trim())
+  );
+
+  document.querySelectorAll(".board-card .item").forEach((item) => {
+    if (topShelfItems.has(item.textContent.trim())) {
+      item.classList.add("top-pick-match");
+    }
+  });
+
+  const fixedIcons = new Map([
+    ["Top Shelf Picks", "TOP"],
+    ["Quality Knight", "QLT"],
+    ["Strength Bonk", "STR"],
+    ["Dexterity DPS", "DEX"],
+    ["Intelligence Sorcery", "INT"],
+    ["Faith Lightning", "FTH"],
+    ["Pyromancy / Dark", "PYR"],
+    ["Luck / Bleed / Hollow", "LCK"],
+    ["Armor", "ARM"],
+    ["Consumables", "CON"],
+    ["Items/Rings", "RNG"],
+    ["Upgrade / Infusion", "UPG"],
+    ["Attribute Caps", "CAP"]
+  ]);
+
+  const titleFor = (card) => card.querySelector("h2")?.textContent.trim() || "Section";
+  const iconFor = (title) => {
+    if (fixedIcons.has(title)) return fixedIcons.get(title);
+    const words = title.replace(/[+/]/g, " ").split(/\s+/).filter(Boolean);
+    return words.map((word) => word[0]).join("").slice(0, 3).toUpperCase() || "SEC";
+  };
+
+  const clearSearchClasses = (card) => {
+    card.classList.remove("search-hidden");
+    card.querySelectorAll(".item, .top-group, .group, .cap-row, .cap-note").forEach((element) => {
+      element.classList.remove("search-hidden");
+    });
+  };
+
+  const updateSearchStatus = (query) => {
+    board.classList.toggle("searching", query.length > 0);
+    searchStatus.replaceChildren();
+    if (!query) return;
+
+    searchStatus.append("Searching for ");
+    const term = document.createElement("strong");
+    term.textContent = query;
+    searchStatus.append(term);
+  };
+
+  const syncFeatureStack = () => {
+    featureStack.hidden = featureCards.every((card) => {
+      return card.hidden || card.classList.contains("search-hidden");
+    });
+  };
+
+  const applySearch = () => {
+    const query = searchInput.value.trim().toLowerCase();
+    updateSearchStatus(query);
+
+    cards.forEach((card) => {
+      clearSearchClasses(card);
+      if (!query || card.hidden) return;
+
+      const entries = Array.from(card.querySelectorAll(".item, .cap-row, .cap-note"));
+      entries.forEach((entry) => {
+        const matches = entry.textContent.trim().toLowerCase().includes(query);
+        entry.classList.toggle("search-hidden", !matches);
+      });
+
+      card.querySelectorAll(".top-group, .group").forEach((group) => {
+        const hasMatch = Array.from(group.querySelectorAll(".item")).some((item) => {
+          return !item.classList.contains("search-hidden");
+        });
+        group.classList.toggle("search-hidden", !hasMatch);
+      });
+
+      const hasVisibleEntry = entries.some((entry) => {
+        return !entry.classList.contains("search-hidden");
+      });
+      card.classList.toggle("search-hidden", !hasVisibleEntry);
+    });
+
+    syncFeatureStack();
+  };
+
+  const renderDock = () => {
+    const hiddenCards = cards.filter((card) => card.hidden);
+    dock.hidden = hiddenCards.length === 0;
+    dockTrack.replaceChildren(...hiddenCards.map((card) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "dock-button";
+      button.textContent = card.dataset.icon;
+      button.title = `Restore ${card.dataset.title}`;
+      button.setAttribute("aria-label", `Restore ${card.dataset.title}`);
+      button.style.setProperty("--accent", card.dataset.accent);
+      button.addEventListener("click", () => restoreCard(card));
+      return button;
+    }));
+  };
+
+  const collapseCard = (card) => {
+    if (card.hidden || card.dataset.busy === "true") return;
+    card.dataset.busy = "true";
+    card.setAttribute("aria-expanded", "false");
+    const animation = card.animate
+      ? card.animate([
+          { opacity: 1, transform: "translateY(0) scale(1)" },
+          { opacity: 0, transform: "translateY(4px) scale(0.985)" }
+        ], { duration: 120, easing: "ease-out" })
+      : null;
+
+    Promise.resolve(animation?.finished).catch(() => {}).then(() => {
+      card.hidden = true;
+      card.dataset.busy = "false";
+      renderDock();
+      syncFeatureStack();
+    });
+  };
+
+  function restoreCard(card) {
+    card.hidden = false;
+    card.dataset.busy = "false";
+    card.setAttribute("aria-expanded", "true");
+    renderDock();
+    applySearch();
+    if (card.animate) {
+      card.animate([
+        { opacity: 0, transform: "translateY(4px) scale(0.985)" },
+        { opacity: 1, transform: "translateY(0) scale(1)" }
+      ], { duration: 120, easing: "ease-out" });
+    }
+  }
+
+  cards.forEach((card, index) => {
+    const title = titleFor(card);
+    card.dataset.order = String(index);
+    card.dataset.title = title;
+    // card.dataset.icon = iconFor(title); DO NOT TOUCH THIS BRUH
+    card.dataset.busy = "false";
+    card.dataset.accent = getComputedStyle(card).getPropertyValue("--accent").trim() || "#a7a49c";
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-expanded", "true");
+    card.title = `Hide ${title}`;
+    card.addEventListener("click", () => collapseCard(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        collapseCard(card);
+      }
+    });
+  });
+
+  searchInput.addEventListener("input", applySearch);
+})();
+  </script>
+</body>
+</html>
