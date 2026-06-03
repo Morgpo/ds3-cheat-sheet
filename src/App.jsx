@@ -146,7 +146,7 @@ function App() {
 
       <SearchStatus query={search.trim()} />
 
-      <div className="feature-stack" hidden={featureStackHidden}>
+      <section aria-label="Featured reference panels" className="feature-grid" hidden={featureStackHidden}>
         {featureSections.map((section) => (
           <SectionRenderer
             key={section.id}
@@ -156,9 +156,9 @@ function App() {
             topShelfItems={topShelfItems}
           />
         ))}
-      </div>
+      </section>
 
-      <section aria-label="Build and category columns" className="main-grid">
+      <section aria-label="Build and category cards" className="build-grid">
         {(cheatSheet.sections.main || []).map((section) => (
           <SectionRenderer
             key={section.id}
@@ -170,7 +170,7 @@ function App() {
         ))}
       </section>
 
-      <section aria-label="Lower utility sections" className="lower-board">
+      <section aria-label="Lower utility sections" className="utility-grid">
         {(cheatSheet.sections.lower || []).map((section) => (
           <SectionRenderer
             key={section.id}
@@ -230,27 +230,14 @@ function SectionRenderer({ collapsed, onCollapse, section, topShelfItems }) {
 function InteractiveSection({ children, className, collapsed, onCollapse, section }) {
   const accent = THEME_VAR[section.theme] || THEME_VAR.neutral;
 
-  function handleKeyDown(event) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      onCollapse(section.id);
-    }
-  }
-
   return (
     <section
-      aria-expanded={!collapsed}
       aria-labelledby={`${section.id}-title`}
       className={`${className}${section.isSearchHidden ? " search-hidden" : ""}`}
       hidden={collapsed}
-      onClick={() => onCollapse(section.id)}
-      onKeyDown={handleKeyDown}
-      role="button"
       style={{ "--accent": accent }}
-      tabIndex={collapsed ? -1 : 0}
-      title={`Hide ${section.title}`}
     >
-      {children}
+      {children({ onCollapse: () => onCollapse(section.id) })}
     </section>
   );
 }
@@ -263,19 +250,24 @@ function TopShelfCard({ collapsed, onCollapse, section }) {
       onCollapse={onCollapse}
       section={section}
     >
-      <div className="section-title">
-        <h2 id={`${section.id}-title`}>{section.title}</h2>
-      </div>
-      <div className="top-grid">
-        {section.groups.map((group) => (
-          <ItemGroup
-            className="top-group"
-            fallbackTheme={section.theme}
-            group={group}
-            key={group.title}
-          />
-        ))}
-      </div>
+      {({ onCollapse: hideSection }) => (
+        <>
+          <header className="section-title">
+            <h2 id={`${section.id}-title`}>{section.title}</h2>
+            <CollapseButton onCollapse={hideSection} section={section} />
+          </header>
+          <div className="top-grid">
+            {section.groups.map((group) => (
+              <ItemGroup
+                className="top-group"
+                fallbackTheme={section.theme}
+                group={group}
+                key={group.title}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </InteractiveSection>
   );
 }
@@ -293,20 +285,27 @@ function BuildCard({ collapsed, onCollapse, section, topShelfItems }) {
       onCollapse={onCollapse}
       section={section}
     >
-      <header className="card-head">
-        <h2 id={`${section.id}-title`}>{section.title}</h2>
-        {section.description ? <p className="card-desc">{section.description}</p> : null}
-      </header>
-      <div className="card-groups">
-        {section.groups.map((group) => (
-          <ItemGroup
-            fallbackTheme={section.theme}
-            group={group}
-            key={group.title}
-            topShelfItems={topShelfItems}
-          />
-        ))}
-      </div>
+      {({ onCollapse: hideSection }) => (
+        <>
+          <header className="card-head">
+            <div className="card-title-row">
+              <h2 id={`${section.id}-title`}>{section.title}</h2>
+              <CollapseButton onCollapse={hideSection} section={section} />
+            </div>
+            {section.description ? <p className="card-desc">{section.description}</p> : null}
+          </header>
+          <div className="card-groups">
+            {section.groups.map((group) => (
+              <ItemGroup
+                fallbackTheme={section.theme}
+                group={group}
+                key={group.title}
+                topShelfItems={topShelfItems}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </InteractiveSection>
   );
 }
@@ -343,20 +342,41 @@ function CapsCard({ collapsed, onCollapse, section }) {
       onCollapse={onCollapse}
       section={section}
     >
-      <header className="card-head">
-        <h2 id={`${section.id}-title`}>{section.title}</h2>
-      </header>
-      <div className="caps-grid">
-        {section.rows.map((row, index) => (
-          <div className={`cap-row${row.isSearchHidden ? " search-hidden" : ""}`} key={index}>
-            {row.entries.map((entry) => (
-              <CapEntry entry={entry} key={`${entry.label}-${entry.detail}`} />
+      {({ onCollapse: hideSection }) => (
+        <>
+          <header className="card-head">
+            <div className="card-title-row">
+              <h2 id={`${section.id}-title`}>{section.title}</h2>
+              <CollapseButton onCollapse={hideSection} section={section} />
+            </div>
+          </header>
+          <div className="caps-grid">
+            {section.rows.map((row, index) => (
+              <div className={`cap-row${row.isSearchHidden ? " search-hidden" : ""}`} key={index}>
+                {row.entries.map((entry) => (
+                  <CapEntry entry={entry} key={`${entry.label}-${entry.detail}`} />
+                ))}
+              </div>
             ))}
+            {section.note ? <CapNote note={section.note} /> : null}
           </div>
-        ))}
-        {section.note ? <CapNote note={section.note} /> : null}
-      </div>
+        </>
+      )}
     </InteractiveSection>
+  );
+}
+
+function CollapseButton({ onCollapse, section }) {
+  return (
+    <button
+      aria-label={`Hide ${section.title}`}
+      className="collapse-button"
+      onClick={onCollapse}
+      title={`Hide ${section.title}`}
+      type="button"
+    >
+      <span aria-hidden="true">-</span>
+    </button>
   );
 }
 
