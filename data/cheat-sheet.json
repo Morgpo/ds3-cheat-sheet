@@ -1,0 +1,546 @@
+{
+  "title": "DS3 PVE Cheat Sheet",
+  "search": {
+    "label": "Search drops",
+    "placeholder": "Should I keep this?"
+  },
+  "sections": {
+    "feature": [
+      {
+        "id": "top-shelf",
+        "type": "top-shelf",
+        "title": "Top Shelf Picks",
+        "theme": "top-shelf",
+        "icon": "spark",
+        "abbrev": "TOP",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              { "text": "Sellsword Twinblades", "style": "dexterity" },
+              { "text": "Lothric Knight Sword", "style": "top-shelf" },
+              { "text": "Exile Greatsword", "style": "strength" },
+              { "text": "Dragonslayer Greataxe", "style": "strength" },
+              { "text": "Lothric Knight Greatsword", "style": "top-shelf" },
+              { "text": "Black Knight Sword", "style": "quality" },
+              { "text": "Demon's Scar", "style": "pyromancy-dark" },
+              { "text": "Moonlight Greatsword", "style": "sorcery" },
+              { "text": "Sunlight Straight Sword", "style": "faith" },
+              { "text": "Splitleaf Greatsword", "style": "top-shelf" },
+              { "text": "Gael's Greatsword", "style": "top-shelf" },
+              { "text": "Storyteller's Staff", "style": "top-shelf" },
+              { "text": "Lothric War Banner", "style": "top-shelf" }
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              { "text": "Ring of Favor +3", "style": "neutral" },
+              { "text": "Prisoner's Chain", "style": "neutral" },
+              { "text": "Chloranthy Ring +3", "style": "neutral" },
+              { "text": "Lloyd's Sword Ring", "style": "neutral" },
+              { "text": "Pontiff's Right Eye", "style": "dexterity" },
+              { "text": "Sage Ring +2", "style": "top-shelf" }
+            ]
+          },
+          {
+            "title": "Shields",
+            "items": [
+              { "text": "Black Knight Shield", "style": "neutral" },
+              { "text": "Lothric Knight Shield", "style": "neutral" },
+              { "text": "Havel's Greatshield", "style": "strength" },
+              { "text": "Ethereal Oak Shield", "style": "neutral" }
+            ]
+          },
+          {
+            "title": "Armor",
+            "items": [
+              { "text": "Lapp's Set", "style": "armor" },
+              { "text": "Black Iron Set", "style": "armor" },
+              { "text": "Winged Knight Set", "style": "armor" }
+            ]
+          },
+          {
+            "title": "Consumables",
+            "items": [
+              { "text": "Gold Pine Bundle", "style": "consumables" },
+              { "text": "Human Pine Resin", "style": "consumables" },
+              { "text": "Carthus Rouge", "style": "consumables" },
+              { "text": "Rusted Gold Coin", "style": "consumables" },
+              { "text": "Green Blossom", "style": "consumables" },
+              { "text": "Budding Green Blossom", "style": "consumables" }
+            ]
+          },
+          {
+            "title": "Utility / Farm",
+            "items": [
+              { "text": "Coiled Sword Fragment", "style": "consumables" },
+              { "text": "Symbol of Avarice", "style": "consumables" },
+              { "text": "Covetous Gold Serpent Ring +3", "style": "consumables" },
+              { "text": "Crystal Sage's Rapier", "style": "consumables" },
+              { "text": "Shield of Want", "style": "consumables" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "attribute-caps",
+        "type": "caps",
+        "title": "Attribute Caps",
+        "theme": "caps",
+        "icon": "gauge",
+        "abbrev": "CAP",
+        "rows": [
+          { "entries": [{ "label": "Vigor", "detail": "HP", "value": "27 \u2192 40 \u2192 50" }] },
+          { "entries": [{ "label": "Attunement", "detail": "FP", "value": "24 \u2192 30 \u2192 35" }] },
+          { "entries": [{ "label": "Endurance", "detail": "STA", "value": "\u2192 40" }] },
+          { "entries": [{ "label": "Vitality", "detail": "EQP", "value": "40 \u2192 99" }] },
+          { "entries": [{ "label": "Strength", "detail": "STR", "value": "40 \u2192 60 \u2192 80" }] },
+          { "entries": [{ "label": "Strength 2H", "detail": "STR x 1.5", "value": "27 \u2192 66" }] },
+          { "entries": [{ "label": "Dexterity", "detail": "DEX", "value": "40 \u2192 60 \u2192 80" }] },
+          { "entries": [{ "label": "Casting Speed", "detail": "DEX", "value": "\u2192 50" }] },
+          {
+            "entries": [
+              { "label": "Intelligence", "detail": "INT", "value": "\u00a0\u00a0\u00a0Casting 60" },
+              { "label": "Faith", "detail": "FTH", "value": "Weapons 40" }
+            ]
+          },
+          {
+            "entries": [
+              { "label": "Pyromancy", "detail": "INT + FTH", "value": "\u00a0\u00a0\u00a0Casting 40" },
+              { "prefix": "and", "label": "Dark", "detail": "INT + FTH", "value": "Weapons 30" }
+            ]
+          },
+          { "entries": [{ "label": "Luck", "detail": "LCK", "value": "Bleed/Hollow 40 \u2192 45" }] },
+          { "entries": [{ "label": "Item Discovery", "detail": "LCK", "value": "\u2192 99" }] }
+        ],
+        "note": {
+          "title": "Reminders",
+          "lines": [
+            "Simple infused offhand gives passive FP regen.",
+            "Blessed infused offhand and Ethereal Oak Shield give passive HP regen.",
+            "Gain another Slot at these Attunement levels: 10, 14, 18, 24, 30, 40, 50, 60, 80, 99",
+            "Sage Ring +2 adds 40 to your casting speed Dexterity."
+          ]
+        }
+      }
+    ],
+    "main": [
+      {
+        "id": "quality-knight",
+        "type": "card",
+        "title": "Quality Knight",
+        "description": "Flexible melee lane for straight swords, greatswords, and boss weapons that stay strong across most PvE fights.",
+        "theme": "quality",
+        "icon": "sword",
+        "abbrev": "QLT",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Lothric Knight Sword",
+              "Black Knight Sword",
+              "Claymore",
+              "Hollowslayer Greatsword",
+              "Wolf Knight's Greatsword",
+              "Farron Greatsword",
+              "Profaned Greatsword",
+              "Ringed Knight Straight Sword",
+              "Gotthard Twinswords",
+              "Gael's Greatsword",
+              "Ringed Knight Paired Greatswords"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": ["Leo Ring", "Hornet Ring", "Lloyd's Sword Ring"]
+          },
+          {
+            "title": "Extras",
+            "items": ["Lothric War Banner", "Pontiff Knight Curved Sword"]
+          }
+        ]
+      },
+      {
+        "id": "strength-bonk",
+        "type": "card",
+        "title": "Strength Bonk",
+        "description": "Slow heavy hits, stagger pressure, trades, and shield-friendly tank play.",
+        "theme": "strength",
+        "icon": "hammer",
+        "abbrev": "STR",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Exile Greatsword",
+              "Great Club",
+              "Vordt's Great Hammer",
+              "Yhorm's Great Machete",
+              "Dragonslayer Greataxe",
+              "Fume Ultra Greatsword",
+              "Ledo's Great Hammer",
+              "Cathedral Knight Greatsword",
+              "Black Knight Greataxe",
+              "Great Mace",
+              "Splitleaf Greatsword",
+              "Millwood Battle Axe",
+              "Greatsword"
+            ]
+          },
+          {
+            "title": "Shields",
+            "items": [
+              "Black Knight Shield",
+              "Cathedral Knight Greatshield",
+              "Lothric Knight Greatshield",
+              "Black Iron Greatshield",
+              "Havel's Greatshield",
+              "Greatshield of Glory",
+              "Moaning Shield",
+              "Dragonslayer Greatshield"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": ["Knight's Ring", "Havel's Ring +3", "Ring of Steel Protection +3"]
+          }
+        ]
+      },
+      {
+        "id": "dexterity-dps",
+        "type": "card",
+        "title": "Dexterity DPS",
+        "description": "Fast multi-hit weapons that stack buffs and shred bosses through repeated pressure.",
+        "theme": "dexterity",
+        "icon": "blade",
+        "abbrev": "DEX",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Sellsword Twinblades",
+              "Warden Twinblades",
+              "Onikiri and Ubadachi",
+              "Washing Pole",
+              "Chaos Blade",
+              "Astora Greatsword",
+              "Lothric Knight Greatsword",
+              "Crow Quills",
+              "Frayed Blade",
+              "Great Corvian Scythe",
+              "Murakumo",
+              "Sharp Lothric Knight Sword",
+              "Pontiff Knight Curved Sword"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Pontiff's Right Eye",
+              "Hunter's Ring",
+              "Lloyd's Sword Ring",
+              "Pontiff's Left Eye",
+              "Carthus Milkring"
+            ]
+          },
+          {
+            "title": "Extras",
+            "items": ["Old Wolf Curved Sword"]
+          }
+        ]
+      },
+      {
+        "id": "intelligence-sorcery",
+        "type": "card",
+        "title": "Intelligence Sorcery",
+        "description": "Ranged spell damage with a light backup weapon and caster gear for safe boss control.",
+        "theme": "sorcery",
+        "icon": "staff",
+        "abbrev": "INT",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Moonlight Greatsword",
+              "Greatsword of Judgment",
+              "Crystal Sage's Rapier",
+              "Heysel Pick",
+              "Immolation Tinder",
+              "Friede's Great Scythe",
+              "Crystal Lothric Knight Sword"
+            ]
+          },
+          {
+            "title": "Catalysts",
+            "items": ["Court Sorcerer's Staff", "Sage's Crystal Staff", "Heretic's Staff", "Izalith Staff"]
+          },
+          {
+            "title": "Spells",
+            "items": [
+              "Great Heavy Soul Arrow",
+              "Crystal Soul Spear",
+              "Homing Crystal Soulmass",
+              "Soul Stream",
+              "Pestilent Mist",
+              "Hidden Body",
+              "Great Soul Dregs"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": ["Young Dragon Ring", "Bellowing Dragoncrest Ring", "Magic Clutch Ring", "Sage Ring +2"]
+          },
+          {
+            "title": "Extras",
+            "items": ["Scholar's Candlestick", "Crown of Dusk", "Murky Longstaff"]
+          }
+        ]
+      },
+      {
+        "id": "faith-lightning",
+        "type": "card",
+        "title": "Faith Lightning",
+        "description": "Buffed melee, close-range lightning casts, sustain, and emergency survival tools.",
+        "theme": "faith",
+        "icon": "sun",
+        "abbrev": "FTH",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Sunlight Straight Sword",
+              "Dragonslayer Swordspear",
+              "Dragonslayer Spear",
+              "Lothric Knight Greatsword",
+              "Saint Bident",
+              "Crucifix of the Mad King",
+              "Wolnir's Holy Sword",
+              "Lightning Lothric Knight Sword",
+              "Rose of Ariandel",
+              "Lothric War Banner"
+            ]
+          },
+          {
+            "title": "Catalysts",
+            "items": [
+              "Yorshka's Chime",
+              "Canvas Talisman",
+              "Saint's Talisman",
+              "Sunless Talisman",
+              "Sacred Chime of Filianore"
+            ]
+          },
+          {
+            "title": "Miracles",
+            "items": [
+              "Lightning Blade",
+              "Darkmoon Blade",
+              "Sunlight Spear",
+              "Lightning Stake",
+              "Lightning Arrow",
+              "Dorhys' Gnawing",
+              "Tears of Denial",
+              "Sacred Oath",
+              "Lightning Storm",
+              "Bountiful Light"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Morne's Ring",
+              "Ring of the Sun's First Born",
+              "Lightning Clutch Ring",
+              "Priestess Ring",
+              "Sun Princess Ring"
+            ]
+          },
+          {
+            "title": "Extras",
+            "items": ["Ethereal Oak Shield"]
+          }
+        ]
+      },
+      {
+        "id": "pyromancy-dark",
+        "type": "card",
+        "title": "Pyromancy / Dark",
+        "description": "Fire and dark damage coverage with chaos/dark weapons for enemies that resist one element.",
+        "theme": "pyromancy-dark",
+        "icon": "flame",
+        "abbrev": "PYR",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Demon's Scar",
+              "Onyx Blade",
+              "Witch's Locks",
+              "Chaos Lothric Knight Sword",
+              "Dark Lothric Knight Sword",
+              "Chaos Dagger",
+              "Dark Claymore",
+              "Crucifix of the Mad King",
+              "Murky Hand Scythe",
+              "Dark Astora Greatsword",
+              "Dark Murakumo"
+            ]
+          },
+          {
+            "title": "Catalysts",
+            "items": [
+              "Pyromancy Flame",
+              "Pyromancer's Parting Flame",
+              "White Hair Talisman",
+              "Izalith Staff",
+              "Murky Longstaff",
+              "Caitha's Chime"
+            ]
+          },
+          {
+            "title": "Pyromancies",
+            "items": [
+              "Great Chaos Fire Orb",
+              "Chaos Bed Vestiges",
+              "Black Fire Orb",
+              "Black Flame",
+              "Profaned Flame",
+              "Rapport",
+              "Carthus Flame Arc",
+              "Black Serpent",
+              "Seething Chaos"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": ["Great Swamp Ring", "Witch's Ring", "Fire Clutch Ring", "Dark Clutch Ring", "Sage Ring +2"]
+          },
+          {
+            "title": "Extras",
+            "items": ["Blindfold Mask"]
+          },
+          {
+            "title": "Dark Spells",
+            "items": ["Great Soul Dregs", "Affinity", "Dark Edge", "Lifehunt Scythe"]
+          }
+        ]
+      },
+      {
+        "id": "luck-bleed-hollow",
+        "type": "card",
+        "title": "Luck / Bleed / Hollow",
+        "description": "Status pressure with bleed, hollow scaling, and fast weapons that reward repeated hits.",
+        "theme": "luck-bleed",
+        "icon": "drop",
+        "abbrev": "LCK",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Anri's Straight Sword",
+              "Hollow Warden Twinblades",
+              "Hollow Carthus Curved Sword",
+              "Bandit's Knife",
+              "Barbed Straight Sword",
+              "Great Corvian Scythe",
+              "Onikiri and Ubadachi",
+              "Hollow Sellsword Twinblades",
+              "Man-Grub's Staff",
+              "Storyteller's Staff",
+              "Bloodlust",
+              "Notched Whip",
+              "Spiked Mace"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": ["Carthus Milkring", "Pontiff's Right Eye", "Bloodbite Ring"]
+          }
+        ]
+      },
+      {
+        "id": "armor",
+        "type": "card",
+        "title": "Armor",
+        "theme": "armor",
+        "icon": "shield",
+        "abbrev": "ARM",
+        "classes": ["armor-card"],
+        "groups": [
+          {
+            "title": "Heavy Sets",
+            "items": ["Lapp's Set", "Havel's Set", "Black Iron Set", "Gundyr's Set", "Winged Knight Set", "Cathedral Knight Set", "Morne's Set"]
+          },
+          {
+            "title": "Medium Sets",
+            "items": ["Black Knight Set", "Millwood Knight Set", "Exile Set", "Dragonslayer Set", "Vilhelm's Set", "Alva Set", "Firelink Set"]
+          },
+          {
+            "title": "Light / Utility Sets",
+            "items": ["Dancer Set", "Fallen Knight Set", "Crown of Dusk", "Symbol of Avarice", "Blindfold Mask", "Desert Pyromancer Hood"]
+          }
+        ]
+      }
+    ],
+    "lower": [
+      {
+        "id": "items-rings",
+        "type": "card",
+        "title": "Items/Rings",
+        "theme": "neutral",
+        "icon": "ring",
+        "abbrev": "RNG",
+        "classes": ["compact-card", "neutral-card"],
+        "groups": [
+          {
+            "title": "Core Rings",
+            "items": ["Ring of the Evil Eye +3", "Sun Princess Ring"]
+          },
+          {
+            "title": "Damage Rings",
+            "items": [
+              "Lloyd's Sword Ring",
+              "Lloyd's Shield Ring",
+              "Hornet Ring",
+              "Red Tearstone Ring",
+              "Flynn's Ring",
+              "Knight Slayer's Ring",
+              "Pontiff's Right Eye",
+              "Pontiff's Left Eye",
+              "Morne's Ring",
+              "Ring of the Sun's First Born",
+              "Magic Clutch Ring",
+              "Lightning Clutch Ring",
+              "Fire Clutch Ring",
+              "Dark Clutch Ring"
+            ]
+          },
+          {
+            "title": "Utility Rings",
+            "items": ["Covetous Gold Serpent Ring +3", "Sage Ring +2", "Priestess Ring", "Knight's Ring", "Hunter's Ring"]
+          }
+        ]
+      },
+      {
+        "id": "upgrade-infusion",
+        "type": "card",
+        "title": "Upgrade / Infusion",
+        "theme": "consumables",
+        "icon": "anvil",
+        "abbrev": "UPG",
+        "classes": ["compact-card"],
+        "groups": [
+          {
+            "title": "Core Materials",
+            "items": ["Titanite Slab", "Titanite Scale", "Twinkling Titanite"]
+          },
+          {
+            "title": "Utility Materials",
+            "items": ["Undead Bone Shard", "Estus Shard"]
+          }
+        ]
+      }
+    ]
+  }
+}
