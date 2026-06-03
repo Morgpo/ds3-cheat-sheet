@@ -309,7 +309,7 @@ h1 {
 
 .top-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px 22px;
 }
 

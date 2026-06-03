@@ -15,101 +15,93 @@
         "abbrev": "TOP",
         "groups": [
           {
-            "title": "Weapons",
+            "title": "THE GOATS",
             "items": [
-              { "text": "Sellsword Twinblades", "style": "dexterity" },
-              { "text": "Lothric Knight Sword", "style": "top-shelf" },
-              { "text": "Exile Greatsword", "style": "strength" },
-              { "text": "Dragonslayer Greataxe", "style": "strength" },
-              { "text": "Lothric Knight Greatsword", "style": "top-shelf" },
-              { "text": "Black Knight Sword", "style": "quality" },
-              { "text": "Demon's Scar", "style": "pyromancy-dark" },
-              { "text": "Moonlight Greatsword", "style": "sorcery" },
-              { "text": "Sunlight Straight Sword", "style": "faith" },
-              { "text": "Splitleaf Greatsword", "style": "top-shelf" },
-              { "text": "Gael's Greatsword", "style": "top-shelf" }
+              "Sellsword Twinblades",
+              "Lothric Knight Greatsword",
+              "Ledo's Great Hammer (DLC)",
+              "Exile Greatsword",
+              "Dragonslayer Greataxe",
+              "Demon's Scar",
+              "Court Sorcerer Staff",
+              "Yorshka's Chime",
+              "Frayed Blade (DLC)",
+              "Black Knight Sword"
             ]
           },
           {
-            "title": "Utility/Offhand",
+            "title": "OFFHAND",
             "items": [
-              { "text": "Shield of Want", "style": "top-shelf" },
-              { "text": "Mendicant’s Staff", "style": "top-shelf" },
-              { "text": "Any torch", "style": "top-shelf" },
-              { "text": "Lothric War Banner", "style": "top-shelf" },
-              { "text": "Storyteller's Staff", "style": "top-shelf" },
-              { "text": "Scholar’s Candlestick", "style": "sorcery" },
-              { "text": "Witchtree Branch", "style": "sorcery" },
-              { "text": "Saint-tree Bellvine", "style": "faith" }
+              "Blessed Caestus +10",
+              "Ethereal Oak Shield +5 (DLC)",
+              "Grass Crest Shield +5",
+              "Simple Caestus +10",
+              "Shield of Want +5",
+              "Filianore’s Sacred Chime +5 (DLC)",
+              "Any Torch",
+              "Scholar’s Candlestick",
+              "Arbalest / Avelyn",
+              "Lothric War Banner +10 (DLC)"
             ]
           },
           {
-            "title": "Spells",
+            "title": "ARMOR",
             "items": [
-              { "text": "Tears of Denial", "style": "top-shelf" },
-              { "text": "Sacred Oath", "style": "top-shelf" },
-              { "text": "Rapport", "style": "neutral" },
-              { "text": "Lothric War Banner", "style": "neutral" },
-              { "text": "Storyteller's Staff", "style": "neutral" },
-              { "text": "Scholar’s Candlestick", "style": "neutral" },
-              { "text": "Witchtree Branch", "style": "neutral" },
-              { "text": "Saint-tree Bellvine", "style": "neutral" }
+              "Havel's Set",
+              "Black Iron Set",
+              "Winged Knight Set",
+              "Lapp's Set (DLC)",
+              "Exile Set",
+              "Gundyr's Set",
+              "Cathedral Knight Set",
+              "Harald Legion Set (DLC)",
+              "Millwood Knight Set (DLC)",
+              "Black Knight Set"
             ]
           },
           {
-            "title": "Rings",
+            "title": "SPELLS",
             "items": [
-              { "text": "Ring of Favor +3", "style": "top-shelf" },
-              { "text": "Ring of Steel Protection +3", "style": "top-shelf" },
-              { "text": "Covetous Silver Serpent Ring +3", "style": "top-shelf" },
-              { "text": "Covetous Gold Serpent Ring +3", "style": "top-shelf" },
-              { "text": "Sage Ring +2", "style": "sorcery" },
-              { "text": "Pontiff's Right Eye", "style": "dexterity" },
-              { "text": "Prisoner's Chain", "style": "neutral" },
-              { "text": "Chloranthy Ring +3", "style": "neutral" },
-              { "text": "Lloyd's Sword Ring", "style": "neutral" }
+              "Chaos Bed Vestiges",
+              "Crystal Soul Spear",
+              "Great Soul Dregs (DLC)",
+              "Pestilent Mist",
+              "Sunlight Spear",
+              "Black Flame Pyromancy",
+              "Great Chaos Fire Orb",
+              "Carthus Flame Arc",
+              "Hidden Body",
+              "Great Heavy Soul Arrow"
             ]
           },
           {
-            "title": "Shields",
+            "title": "RINGS",
             "items": [
-              { "text": "Grass Crest Shield", "style": "top-shelf" },
-              { "text": "Ethereal Oak Shield", "style": "top-shelf" },
-              { "text": "Black Knight Shield", "style": "neutral" },
-              { "text": "Lothric Knight Shield", "style": "neutral" },
-              { "text": "Havel's Greatshield", "style": "strength" }
+              "Ring of Favor +3",
+              "Prisoner's Chain",
+              "Chloranthy Ring +3",
+              "Ring of Steel Protection +3",
+              "Havel's Ring +3",
+              "Lloyd's Sword Ring",
+              "Hornet Ring",
+              "Clutch Rings",
+              "Sage Ring +2",
+              "Estus Ring"
             ]
           },
           {
-            "title": "Armor",
+            "title": "ITEMS/CONSUMABLES",
             "items": [
-              { "text": "Symbol of Avarice", "style": "top-shelf" },
-              { "text": "Lapp's Set", "style": "top-shelf" },
-              { "text": "Black Iron Set", "style": "armor" },
-              { "text": "Winged Knight Set", "style": "armor" },
-              { "text": "Crown of Dusk", "style": "sorcery" },
-              { "text": "Blindfold Mask", "style": "pyromancy-dark" }
-            ]
-          },
-          {
-            "title": "Consumables",
-            "items": [
-              { "text": "Purple Moss Clump", "style": "consumables" },
-              { "text": "Blooming Purple Moss Clump", "style": "consumables" },
-              { "text": "Undead Hunter Charm", "style": "consumables" },
-              { "text": "Rusted Gold Coin", "style": "consumables" },
-              { "text": "Alluring Skull", "style": "consumables" }
-            ]
-          },
-          {
-            "title": "Items",
-            "items": [
-              { "text": "Coiled Sword Fragment", "style": "top-shelf" },
-              { "text": "Undead Bone Shard", "style": "top-shelf" },
-              { "text": "Estus Shard", "style": "top-shelf" },
-              { "text": "Titanite Slab", "style": "top-shelf" },
-              { "text": "Titanite Scale", "style": "neutral" },
-              { "text": "Twinkling Titanite", "style": "neutral" }
+              "Ember",
+              "Coiled Sword Fragment",
+              "Budding Green Blossom",
+              "Resins & Bundles",
+              "Mossfruit",
+              "Divine Blessing",
+              "Siegbrau",
+              "Bug Pellets",
+              "Black Firebombs",
+              "Undead Hunter Charm"
             ]
           }
         ]
