@@ -477,17 +477,12 @@ ul {
 
 .caps-table th:nth-child(2),
 .caps-table td:nth-child(2) {
-  width: 27%;
+  width: 26%;
 }
 
 .caps-table th:nth-child(3),
 .caps-table td:nth-child(3) {
-  width: 29%;
-}
-
-.caps-table th:nth-child(4),
-.caps-table td:nth-child(4) {
-  width: 20%;
+  width: 50%;
 }
 
 .caps-table tbody tr:last-child th,
@@ -527,10 +522,6 @@ ul {
   font-size: 0.78rem;
   font-weight: 760;
   white-space: nowrap;
-}
-
-.cap-note-cell {
-  color: var(--dim);
 }
 
 .cap-note {
@@ -685,9 +676,7 @@ ul {
   .caps-table th:nth-child(2),
   .caps-table td:nth-child(2),
   .caps-table th:nth-child(3),
-  .caps-table td:nth-child(3),
-  .caps-table th:nth-child(4),
-  .caps-table td:nth-child(4) {
+  .caps-table td:nth-child(3) {
     width: 100%;
   }
 
@@ -722,10 +711,6 @@ ul {
     font-weight: 780;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-  }
-
-  .cap-note-empty {
-    display: none;
   }
 }
 

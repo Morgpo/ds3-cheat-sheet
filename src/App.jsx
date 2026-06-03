@@ -33,8 +33,7 @@ function capRowText(row) {
     row.attribute,
     row.metric,
     row.use,
-    ...(row.breakpoints || []),
-    row.note
+    ...(row.breakpoints || [])
   ].filter(Boolean).join(" ");
 }
 
@@ -383,8 +382,7 @@ function CapsTable({ rows }) {
         <tr>
           <th scope="col">Attribute</th>
           <th scope="col">Use</th>
-          <th scope="col">Breakpoints</th>
-          <th scope="col">Note</th>
+          <th scope="col">Soft Caps</th>
         </tr>
       </thead>
       <tbody>
@@ -401,9 +399,6 @@ function CapsTable({ rows }) {
                   <span className="cap-chip" key={breakpoint}>{breakpoint}</span>
                 ))}
               </span>
-            </td>
-            <td data-label="Note" className={`cap-note-cell${row.note ? "" : " cap-note-empty"}`}>
-              {row.note || ""}
             </td>
           </tr>
         ))}
