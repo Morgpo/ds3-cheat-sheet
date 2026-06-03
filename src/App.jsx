@@ -28,12 +28,14 @@ function itemStyle(item, fallbackTheme) {
   return typeof item === "string" ? fallbackTheme : item.style || fallbackTheme;
 }
 
-function capEntryText(entry) {
-  return [entry.prefix, entry.label, entry.detail, entry.value].filter(Boolean).join(" ");
-}
-
 function capRowText(row) {
-  return row.entries.map(capEntryText).join(" ");
+  return [
+    row.attribute,
+    row.metric,
+    row.use,
+    ...(row.breakpoints || []),
+    row.note
+  ].filter(Boolean).join(" ");
 }
 
 function getVisibleSection(section, query) {
@@ -350,14 +352,8 @@ function CapsCard({ collapsed, onCollapse, section }) {
               <CollapseButton onCollapse={hideSection} section={section} />
             </div>
           </header>
-          <div className="caps-grid">
-            {section.rows.map((row, index) => (
-              <div className={`cap-row${row.isSearchHidden ? " search-hidden" : ""}`} key={index}>
-                {row.entries.map((entry) => (
-                  <CapEntry entry={entry} key={`${entry.label}-${entry.detail}`} />
-                ))}
-              </div>
-            ))}
+          <div className="caps-table-wrap">
+            <CapsTable rows={section.rows} />
             {section.note ? <CapNote note={section.note} /> : null}
           </div>
         </>
@@ -380,15 +376,39 @@ function CollapseButton({ onCollapse, section }) {
   );
 }
 
-function CapEntry({ entry }) {
+function CapsTable({ rows }) {
   return (
-    <>
-      <span className="cap-label">
-        {entry.prefix ? <small>{entry.prefix} </small> : null}
-        {entry.label} <small>({entry.detail})</small>
-      </span>
-      <span className="cap-value">{entry.value}</span>
-    </>
+    <table className="caps-table">
+      <thead>
+        <tr>
+          <th scope="col">Attribute</th>
+          <th scope="col">Use</th>
+          <th scope="col">Breakpoints</th>
+          <th scope="col">Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr className={row.isSearchHidden ? " search-hidden" : ""} key={`${row.attribute}-${row.use}`}>
+            <th data-label="Attribute" scope="row">
+              <span className="cap-attribute">{row.attribute}</span>
+              <small>{row.metric}</small>
+            </th>
+            <td data-label="Use">{row.use}</td>
+            <td data-label="Breakpoints">
+              <span className="cap-breakpoints">
+                {(row.breakpoints || []).map((breakpoint) => (
+                  <span className="cap-chip" key={breakpoint}>{breakpoint}</span>
+                ))}
+              </span>
+            </td>
+            <td data-label="Note" className={`cap-note-cell${row.note ? "" : " cap-note-empty"}`}>
+              {row.note || ""}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 

@@ -91,28 +91,20 @@
         "icon": "gauge",
         "abbrev": "CAP",
         "rows": [
-          { "entries": [{ "label": "Vigor", "detail": "HP", "value": "27 \u2192 40 \u2192 50" }] },
-          { "entries": [{ "label": "Attunement", "detail": "FP", "value": "24 \u2192 30 \u2192 35" }] },
-          { "entries": [{ "label": "Endurance", "detail": "STA", "value": "\u2192 40" }] },
-          { "entries": [{ "label": "Vitality", "detail": "EQP", "value": "40 \u2192 99" }] },
-          { "entries": [{ "label": "Strength", "detail": "STR", "value": "40 \u2192 60 \u2192 80" }] },
-          { "entries": [{ "label": "Strength 2H", "detail": "STR x 1.5", "value": "27 \u2192 66" }] },
-          { "entries": [{ "label": "Dexterity", "detail": "DEX", "value": "40 \u2192 60 \u2192 80" }] },
-          { "entries": [{ "label": "Casting Speed", "detail": "DEX", "value": "\u2192 50" }] },
-          {
-            "entries": [
-              { "label": "Intelligence", "detail": "INT", "value": "\u00a0\u00a0\u00a0Casting 60" },
-              { "label": "Faith", "detail": "FTH", "value": "Weapons 40" }
-            ]
-          },
-          {
-            "entries": [
-              { "label": "Pyromancy", "detail": "INT + FTH", "value": "\u00a0\u00a0\u00a0Casting 40" },
-              { "prefix": "and", "label": "Dark", "detail": "INT + FTH", "value": "Weapons 30" }
-            ]
-          },
-          { "entries": [{ "label": "Luck", "detail": "LCK", "value": "Bleed/Hollow 40 \u2192 45" }] },
-          { "entries": [{ "label": "Item Discovery", "detail": "LCK", "value": "\u2192 99" }] }
+          { "attribute": "Vigor", "metric": "HP", "use": "HP", "breakpoints": ["27", "40", "50"] },
+          { "attribute": "Attunement", "metric": "FP", "use": "FP", "breakpoints": ["24", "30", "35"] },
+          { "attribute": "Endurance", "metric": "STA", "use": "Stamina", "breakpoints": ["40"] },
+          { "attribute": "Vitality", "metric": "EQP", "use": "Equip load", "breakpoints": ["40", "99"] },
+          { "attribute": "Strength", "metric": "STR", "use": "Weapon scaling", "breakpoints": ["40", "60", "80"] },
+          { "attribute": "Strength 2H", "metric": "STR x 1.5", "use": "Two-handed scaling", "breakpoints": ["27", "66"], "note": "Two-handing treats STR as 1.5x." },
+          { "attribute": "Dexterity", "metric": "DEX", "use": "Weapon scaling", "breakpoints": ["40", "60", "80"] },
+          { "attribute": "Casting Speed", "metric": "DEX", "use": "Cast speed", "breakpoints": ["50"] },
+          { "attribute": "Intelligence", "metric": "INT", "use": "Sorcery casting", "breakpoints": ["60"] },
+          { "attribute": "Faith", "metric": "FTH", "use": "Faith weapon scaling", "breakpoints": ["40"] },
+          { "attribute": "Pyromancy", "metric": "INT + FTH", "use": "Pyro casting", "breakpoints": ["40 INT + 40 FTH"] },
+          { "attribute": "Dark", "metric": "INT + FTH", "use": "Dark weapon scaling", "breakpoints": ["30 INT + 30 FTH"] },
+          { "attribute": "Luck", "metric": "LCK", "use": "Bleed/Hollow", "breakpoints": ["40", "45"] },
+          { "attribute": "Item Discovery", "metric": "LCK", "use": "Item discovery", "breakpoints": ["99"] }
         ],
         "note": {
           "title": "Reminders",
@@ -165,7 +157,7 @@
         "id": "strength-bonk",
         "type": "card",
         "title": "Strength Bonk",
-        "description": "Slow heavy hits, stagger pressure, trades, and shield-friendly tank play.",
+        "description": "Slow heavy hits, stagger pressure, trades, and high-poise tank play.",
         "theme": "strength",
         "icon": "hammer",
         "abbrev": "STR",
@@ -186,19 +178,6 @@
               "Splitleaf Greatsword",
               "Millwood Battle Axe",
               "Greatsword"
-            ]
-          },
-          {
-            "title": "Shields",
-            "items": [
-              "Black Knight Shield",
-              "Cathedral Knight Greatshield",
-              "Lothric Knight Greatshield",
-              "Black Iron Greatshield",
-              "Havel's Greatshield",
-              "Greatshield of Glory",
-              "Moaning Shield",
-              "Dragonslayer Greatshield"
             ]
           },
           {
@@ -355,10 +334,6 @@
               "Priestess Ring",
               "Sun Princess Ring"
             ]
-          },
-          {
-            "title": "Extras",
-            "items": ["Ethereal Oak Shield"]
           }
         ]
       },
@@ -463,6 +438,7 @@
         "id": "armor",
         "type": "card",
         "title": "Armor",
+        "description": "Poise, absorption, and utility sets for tuning survivability without sacrificing too much equip load.",
         "theme": "armor",
         "icon": "shield",
         "abbrev": "ARM",
@@ -481,6 +457,37 @@
             "items": ["Dancer Set", "Fallen Knight Set", "Crown of Dusk", "Symbol of Avarice", "Blindfold Mask", "Desert Pyromancer Hood"]
           }
         ]
+      },
+      {
+        "id": "shields",
+        "type": "card",
+        "title": "Shields",
+        "description": "Blocking, stability, passive regen, and utility shields that can slot into melee or sustain setups.",
+        "theme": "armor",
+        "icon": "shield",
+        "abbrev": "SHD",
+        "groups": [
+          {
+            "title": "Medium Shields",
+            "items": ["Black Knight Shield", "Lothric Knight Shield", "Ethereal Oak Shield"]
+          },
+          {
+            "title": "Utility Shields",
+            "items": ["Shield of Want"]
+          },
+          {
+            "title": "Greatshields",
+            "items": [
+              "Cathedral Knight Greatshield",
+              "Lothric Knight Greatshield",
+              "Black Iron Greatshield",
+              "Havel's Greatshield",
+              "Greatshield of Glory",
+              "Moaning Shield",
+              "Dragonslayer Greatshield"
+            ]
+          }
+        ]
       }
     ],
     "lower": [
@@ -488,6 +495,7 @@
         "id": "items-rings",
         "type": "card",
         "title": "Items/Rings",
+        "description": "Core ring swaps for sustain, damage, casting, item discovery, and stat breakpoints.",
         "theme": "neutral",
         "icon": "ring",
         "abbrev": "RNG",
@@ -525,7 +533,8 @@
       {
         "id": "upgrade-infusion",
         "type": "card",
-        "title": "Upgrade / Infusion",
+        "title": "Upgrade/Infusion",
+        "description": "Key upgrade materials and flask improvements to prioritize while routing builds through PvE.",
         "theme": "consumables",
         "icon": "anvil",
         "abbrev": "UPG",
