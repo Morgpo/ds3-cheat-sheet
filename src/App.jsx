@@ -31,10 +31,29 @@ function itemStyle(item, fallbackTheme) {
 function capRowText(row) {
   return [
     row.attribute,
-    row.metric,
     row.use,
     ...(row.breakpoints || [])
   ].filter(Boolean).join(" ");
+}
+
+function groupCapRows(rows) {
+  return rows.reduce((groups, row) => {
+    const group = groups.find((current) => current.attribute === row.attribute);
+
+    if (group) {
+      group.rows.push(row);
+      group.isSearchHidden = group.rows.every((entry) => entry.isSearchHidden);
+      return groups;
+    }
+
+    groups.push({
+      attribute: row.attribute,
+      rows: [row],
+      isSearchHidden: row.isSearchHidden
+    });
+
+    return groups;
+  }, []);
 }
 
 function getVisibleSection(section, query) {
@@ -376,8 +395,15 @@ function CollapseButton({ onCollapse, section }) {
 }
 
 function CapsTable({ rows }) {
+  const groupedRows = groupCapRows(rows);
+
   return (
     <table className="caps-table">
+      <colgroup>
+        <col className="cap-attribute-col" />
+        <col className="cap-use-col" />
+        <col className="cap-breakpoints-col" />
+      </colgroup>
       <thead>
         <tr>
           <th scope="col">Attribute</th>
@@ -386,19 +412,29 @@ function CapsTable({ rows }) {
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => (
-          <tr className={row.isSearchHidden ? " search-hidden" : ""} key={`${row.attribute}-${row.use}`}>
+        {groupedRows.map((group) => (
+          <tr className={group.isSearchHidden ? " search-hidden" : ""} key={group.attribute}>
             <th data-label="Attribute" scope="row">
-              <span className="cap-attribute">{row.attribute}</span>
-              <small>{row.metric}</small>
+              <span className="cap-attribute">{group.attribute}</span>
             </th>
-            <td data-label="Use">{row.use}</td>
-            <td data-label="Breakpoints">
-              <span className="cap-breakpoints">
-                {(row.breakpoints || []).map((breakpoint) => (
-                  <span className="cap-chip" key={breakpoint}>{breakpoint}</span>
+            <td colSpan="2" data-label="Uses">
+              <div className="cap-uses">
+                {group.rows.map((row) => (
+                  <div
+                    className={`cap-use-row${row.isSearchHidden ? " search-hidden" : ""}`}
+                    key={`${row.attribute}-${row.use}`}
+                  >
+                    <div className="cap-use">
+                      <span>{row.use}</span>
+                    </div>
+                    <span className="cap-breakpoints">
+                      {(row.breakpoints || []).map((breakpoint) => (
+                        <span className="cap-chip" key={breakpoint}>{breakpoint}</span>
+                      ))}
+                    </span>
+                  </div>
                 ))}
-              </span>
+              </div>
             </td>
           </tr>
         ))}

@@ -450,6 +450,18 @@ ul {
   background: var(--panel-soft);
 }
 
+.cap-attribute-col {
+  width: 24%;
+}
+
+.cap-use-col {
+  width: 24%;
+}
+
+.cap-breakpoints-col {
+  width: 52%;
+}
+
 .caps-table th,
 .caps-table td {
   padding: 8px 9px;
@@ -475,16 +487,6 @@ ul {
   font-weight: 780;
 }
 
-.caps-table th:nth-child(2),
-.caps-table td:nth-child(2) {
-  width: 26%;
-}
-
-.caps-table th:nth-child(3),
-.caps-table td:nth-child(3) {
-  width: 50%;
-}
-
 .caps-table tbody tr:last-child th,
 .caps-table tbody tr:last-child td {
   border-bottom: 0;
@@ -494,14 +496,36 @@ ul {
   display: block;
 }
 
-.caps-table small {
+.cap-uses {
+  display: grid;
+  gap: 0;
+}
+
+.cap-use-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 32%) minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(238, 232, 219, 0.055);
+}
+
+.cap-use-row:first-child {
+  padding-top: 0;
+}
+
+.cap-use-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.cap-use {
+  min-width: 0;
+  color: var(--muted);
+}
+
+.cap-use span {
   display: block;
-  margin-top: 2px;
-  color: var(--dim);
-  font-size: 0.65rem;
-  font-weight: 760;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .cap-breakpoints {
@@ -711,6 +735,16 @@ ul {
     font-weight: 780;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  .cap-uses {
+    gap: 7px;
+  }
+
+  .cap-use-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding: 0 0 8px;
   }
 }
 

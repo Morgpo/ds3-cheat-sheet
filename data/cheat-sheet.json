@@ -27,58 +27,89 @@
               { "text": "Moonlight Greatsword", "style": "sorcery" },
               { "text": "Sunlight Straight Sword", "style": "faith" },
               { "text": "Splitleaf Greatsword", "style": "top-shelf" },
-              { "text": "Gael's Greatsword", "style": "top-shelf" },
+              { "text": "Gael's Greatsword", "style": "top-shelf" }
+            ]
+          },
+          {
+            "title": "Utility/Offhand",
+            "items": [
+              { "text": "Shield of Want", "style": "top-shelf" },
+              { "text": "Mendicant’s Staff", "style": "top-shelf" },
+              { "text": "Any torch", "style": "top-shelf" },
+              { "text": "Lothric War Banner", "style": "top-shelf" },
               { "text": "Storyteller's Staff", "style": "top-shelf" },
-              { "text": "Lothric War Banner", "style": "top-shelf" }
+              { "text": "Scholar’s Candlestick", "style": "sorcery" },
+              { "text": "Witchtree Branch", "style": "sorcery" },
+              { "text": "Saint-tree Bellvine", "style": "faith" }
+            ]
+          },
+          {
+            "title": "Spells",
+            "items": [
+              { "text": "Tears of Denial", "style": "top-shelf" },
+              { "text": "Sacred Oath", "style": "top-shelf" },
+              { "text": "Rapport", "style": "neutral" },
+              { "text": "Lothric War Banner", "style": "neutral" },
+              { "text": "Storyteller's Staff", "style": "neutral" },
+              { "text": "Scholar’s Candlestick", "style": "neutral" },
+              { "text": "Witchtree Branch", "style": "neutral" },
+              { "text": "Saint-tree Bellvine", "style": "neutral" }
             ]
           },
           {
             "title": "Rings",
             "items": [
-              { "text": "Ring of Favor +3", "style": "neutral" },
+              { "text": "Ring of Favor +3", "style": "top-shelf" },
+              { "text": "Ring of Steel Protection +3", "style": "top-shelf" },
+              { "text": "Covetous Silver Serpent Ring +3", "style": "top-shelf" },
+              { "text": "Covetous Gold Serpent Ring +3", "style": "top-shelf" },
+              { "text": "Sage Ring +2", "style": "sorcery" },
+              { "text": "Pontiff's Right Eye", "style": "dexterity" },
               { "text": "Prisoner's Chain", "style": "neutral" },
               { "text": "Chloranthy Ring +3", "style": "neutral" },
-              { "text": "Lloyd's Sword Ring", "style": "neutral" },
-              { "text": "Pontiff's Right Eye", "style": "dexterity" },
-              { "text": "Sage Ring +2", "style": "top-shelf" }
+              { "text": "Lloyd's Sword Ring", "style": "neutral" }
             ]
           },
           {
             "title": "Shields",
             "items": [
+              { "text": "Grass Crest Shield", "style": "top-shelf" },
+              { "text": "Ethereal Oak Shield", "style": "top-shelf" },
               { "text": "Black Knight Shield", "style": "neutral" },
               { "text": "Lothric Knight Shield", "style": "neutral" },
-              { "text": "Havel's Greatshield", "style": "strength" },
-              { "text": "Ethereal Oak Shield", "style": "neutral" }
+              { "text": "Havel's Greatshield", "style": "strength" }
             ]
           },
           {
             "title": "Armor",
             "items": [
-              { "text": "Lapp's Set", "style": "armor" },
+              { "text": "Symbol of Avarice", "style": "top-shelf" },
+              { "text": "Lapp's Set", "style": "top-shelf" },
               { "text": "Black Iron Set", "style": "armor" },
-              { "text": "Winged Knight Set", "style": "armor" }
+              { "text": "Winged Knight Set", "style": "armor" },
+              { "text": "Crown of Dusk", "style": "sorcery" },
+              { "text": "Blindfold Mask", "style": "pyromancy-dark" }
             ]
           },
           {
             "title": "Consumables",
             "items": [
-              { "text": "Gold Pine Bundle", "style": "consumables" },
-              { "text": "Human Pine Resin", "style": "consumables" },
-              { "text": "Carthus Rouge", "style": "consumables" },
+              { "text": "Purple Moss Clump", "style": "consumables" },
+              { "text": "Blooming Purple Moss Clump", "style": "consumables" },
+              { "text": "Undead Hunter Charm", "style": "consumables" },
               { "text": "Rusted Gold Coin", "style": "consumables" },
-              { "text": "Green Blossom", "style": "consumables" },
-              { "text": "Budding Green Blossom", "style": "consumables" }
+              { "text": "Alluring Skull", "style": "consumables" }
             ]
           },
           {
-            "title": "Utility / Farm",
+            "title": "Items",
             "items": [
-              { "text": "Coiled Sword Fragment", "style": "consumables" },
-              { "text": "Symbol of Avarice", "style": "consumables" },
-              { "text": "Covetous Gold Serpent Ring +3", "style": "consumables" },
-              { "text": "Crystal Sage's Rapier", "style": "consumables" },
-              { "text": "Shield of Want", "style": "consumables" }
+              { "text": "Coiled Sword Fragment", "style": "top-shelf" },
+              { "text": "Undead Bone Shard", "style": "top-shelf" },
+              { "text": "Estus Shard", "style": "top-shelf" },
+              { "text": "Titanite Slab", "style": "top-shelf" },
+              { "text": "Titanite Scale", "style": "neutral" },
+              { "text": "Twinkling Titanite", "style": "neutral" }
             ]
           }
         ]
@@ -91,34 +122,34 @@
         "icon": "gauge",
         "abbrev": "CAP",
         "rows": [
-          { "attribute": "Vigor", "metric": "HP", "use": "HP", "breakpoints": ["27", "39/40", "50"] },
-          { "attribute": "Attunement", "metric": "FP", "use": "FP efficiency", "breakpoints": ["35"] },
-          { "attribute": "Attunement", "metric": "Slots", "use": "Spell slots", "breakpoints": ["10", "14", "18", "24", "30", "40", "50", "60", "80", "99"] },
-          { "attribute": "Endurance", "metric": "STA", "use": "Stamina", "breakpoints": ["40"] },
-          { "attribute": "Vitality", "metric": "EQP", "use": "Equip load", "breakpoints": ["No soft cap"] },
-          { "attribute": "Vitality", "metric": "Defense", "use": "Physical defense", "breakpoints": ["25", "40"] },
-          { "attribute": "Strength", "metric": "STR", "use": "Weapon scaling", "breakpoints": ["40", "60"] },
-          { "attribute": "Strength 2H", "metric": "STR x 1.5", "use": "Effective STR", "breakpoints": ["27 -> 40", "40 -> 60", "66 -> 99"] },
-          { "attribute": "Dexterity", "metric": "DEX", "use": "Normal scaling", "breakpoints": ["40", "60"] },
-          { "attribute": "Dexterity", "metric": "Sharp", "use": "Sharp scaling", "breakpoints": ["70-80"] },
-          { "attribute": "Dexterity", "metric": "Cast speed", "use": "Casting speed", "breakpoints": ["50 effective"] },
-          { "attribute": "Intelligence", "metric": "INT", "use": "Weapons", "breakpoints": ["40 Crystal", "30 Dark/Chaos"] },
-          { "attribute": "Intelligence", "metric": "Sorcery", "use": "Sorcery casting", "breakpoints": ["45 slowdown", "60 caster"] },
-          { "attribute": "Faith", "metric": "FTH", "use": "Weapons", "breakpoints": ["40 Lightning/Blessed", "30 Dark/Chaos"] },
-          { "attribute": "Faith", "metric": "Miracles", "use": "Miracle casting", "breakpoints": ["45 slowdown", "60 caster"] },
-          { "attribute": "Pyromancy", "metric": "INT + FTH", "use": "Spell Buff", "breakpoints": ["40 INT + 40 FTH"] },
-          { "attribute": "Dark catalysts", "metric": "INT + FTH", "use": "Spell Buff", "breakpoints": ["45 INT + 45 FTH"] },
-          { "attribute": "Luck", "metric": "LCK", "use": "Damage", "breakpoints": ["40", "60"] },
-          { "attribute": "Luck", "metric": "Bleed/poison", "use": "Status buildup", "breakpoints": ["20-40", "50"] },
-          { "attribute": "Luck", "metric": "Item discovery", "use": "Item discovery", "breakpoints": ["Linear"] }
+          { "attribute": "Vigor", "use": "HP", "breakpoints": ["27", "39", "50"] },
+          { "attribute": "Attunement", "use": "FP", "breakpoints": ["35"] },
+          { "attribute": "Endurance", "use": "Stamina", "breakpoints": ["40"] },
+          { "attribute": "Vitality", "use": "Physical defense", "breakpoints": ["25", "40"] },
+          { "attribute": "Vitality", "use": "Equip load", "breakpoints": ["Linear"] },
+          { "attribute": "Strength", "use": "Damage scaling", "breakpoints": ["40", "60"] },
+          { "attribute": "Strength", "use": "Damage scaling (2H)", "breakpoints": ["27", "40", "66"] },
+          { "attribute": "Dexterity", "use": "Standard scaling", "breakpoints": ["40", "60"] },
+          { "attribute": "Dexterity", "use": "Sharp scaling", "breakpoints": ["40", "80"] },
+          { "attribute": "Dexterity", "use": "Casting speed", "breakpoints": ["50"] },
+          { "attribute": "Intelligence", "use": "Weapon scaling", "breakpoints": ["40"] },
+          { "attribute": "Intelligence", "use": "Spell buff", "breakpoints": ["45", "60"] },
+          { "attribute": "Faith", "use": "Weapon scaling", "breakpoints": ["40"] },
+          { "attribute": "Faith", "use": "Spell buff", "breakpoints": ["45", "60"] },
+          { "attribute": "Pyromancy", "use": "Spell buff", "breakpoints": ["40 INT", "40 FTH"] },
+          { "attribute": "Dark/Chaos", "use": "Weapon scaling", "breakpoints": ["30 INT", "30 FTH"] },
+          { "attribute": "Dark/Chaos", "use": "Spell buff", "breakpoints": ["45 INT", "45 FTH"] },
+          { "attribute": "Luck", "use": "Damage scaling", "breakpoints": ["40", "60"] },
+          { "attribute": "Luck", "use": "Status buildup", "breakpoints": ["20", "40", "50"] },
+          { "attribute": "Luck", "use": "Item discovery", "breakpoints": ["Linear"] }
         ],
         "note": {
           "title": "Reminders",
           "lines": [
             "Simple infused offhand gives passive FP regen.",
             "Blessed infused offhand and Ethereal Oak Shield give passive HP regen.",
-            "Gain another Slot at these Attunement levels: 10, 14, 18, 24, 30, 40, 50, 60, 80, 99",
-            "Sage Ring +2 adds 40 to your casting speed Dexterity."
+            "Spell Buff scaling depends heavily on the catalyst. Check specific tools for exact caps.",
+            "Gain an extra spell slot at: 10/14/18/24/30/40/50/60/80/99 Attunement levels."
           ]
         }
       }
