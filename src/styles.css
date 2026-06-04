@@ -166,17 +166,74 @@ h1 {
 }
 
 .feature-grid {
+  position: relative;
   grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.75fr);
+  column-gap: 18px;
   margin-bottom: 14px;
+  padding-bottom: 18px;
 }
 
 .searching .feature-grid {
   grid-template-columns: 1fr;
 }
 
+.searching .feature-grid > * + *::before {
+  left: 8px;
+  right: 8px;
+  top: -10px;
+  bottom: auto;
+  width: auto;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--c-top-shelf) 28%, var(--line-soft)),
+    color-mix(in srgb, var(--c-caps) 24%, var(--line-soft)),
+    transparent
+  );
+}
+
 .build-grid {
+  position: relative;
   grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  padding-top: 18px;
   margin-bottom: 14px;
+}
+
+.feature-grid > * + *::before,
+.build-grid::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.feature-grid > * + *::before {
+  left: -10px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--c-top-shelf) 28%, var(--line-soft)),
+    color-mix(in srgb, var(--c-caps) 24%, var(--line-soft)),
+    transparent
+  );
+}
+
+.build-grid::before {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--c-caps) 34%, var(--line-soft)) 12%,
+    color-mix(in srgb, var(--c-top-shelf) 24%, var(--line-soft)) 50%,
+    color-mix(in srgb, var(--c-neutral) 22%, var(--line-soft)) 88%,
+    transparent
+  );
 }
 
 .utility-grid {
@@ -196,6 +253,7 @@ h1 {
 .top-shelf,
 .board-card {
   --accent: var(--c-neutral);
+  position: relative;
   min-width: 0;
   border: 1px solid var(--line-soft);
   border-left: 4px solid var(--accent);
@@ -668,6 +726,22 @@ ul {
 @media (max-width: 1040px) {
   .feature-grid {
     grid-template-columns: 1fr;
+  }
+
+  .feature-grid > * + *::before {
+    left: 8px;
+    right: 8px;
+    top: -10px;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--c-top-shelf) 28%, var(--line-soft)),
+      color-mix(in srgb, var(--c-caps) 24%, var(--line-soft)),
+      transparent
+    );
   }
 }
 
