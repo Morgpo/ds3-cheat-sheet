@@ -14,3 +14,7 @@ Prefer simple solutions - don't overcomplicate things
 Reuse existing code and components - don't reinvent the wheel
 
 Ask questions for any ambiguities - especially in Plan Mode
+
+---
+
+Top Shelf Picks and Attribute Caps data should be treated as complete, don't edit it but you can have the same entries in other sections
