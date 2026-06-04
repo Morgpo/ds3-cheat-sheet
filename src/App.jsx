@@ -39,6 +39,18 @@ const WEAPON_PREFIXES = [
   "blood"
 ];
 
+const ELITE_TOP_SHELF_ITEMS = new Set([
+  "Sellsword Twinblades",
+  "Lothric Knight Sword",
+  "Claymore",
+  "Ring of Favor +3",
+  "Prisoner's Chain",
+  "Chloranthy Ring +3",
+  "Chaos Bed Vestiges",
+  "Crystal Soul Spear",
+  "Black Flame"
+].map(normalizeWeaponName));
+
 function normalizeText(value) {
   return String(value ?? "").trim().toLowerCase();
 }
@@ -423,15 +435,18 @@ function ItemGroup({ className = "group", fallbackTheme, group, itemBuildThemes,
           const value = item.value ?? item;
           const text = itemText(value);
           const styleName = itemStyle(value, fallbackTheme);
+          const isTopShelfSection = fallbackTheme === "top-shelf";
+          const isEliteTopShelfItem = isTopShelfSection && ELITE_TOP_SHELF_ITEMS.has(normalizeWeaponName(text));
           const isTopShelfWeapon = topShelfWeapons.has(normalizeWeaponName(text)) || topShelfWeapons.has(baseWeaponName(text));
           const hidden = item.isSearchHidden ? " search-hidden" : "";
           const topShelfWeapon = isTopShelfWeapon ? " top-shelf-weapon-match" : "";
-          const buildTheme = itemBuildThemes ? getUniqueBuildTheme(itemBuildThemes, text) : null;
+          const topShelfTone = isTopShelfSection ? ` top-shelf-${isEliteTopShelfItem ? "elite" : "normal"}` : "";
+          const buildTheme = !isTopShelfSection && itemBuildThemes ? getUniqueBuildTheme(itemBuildThemes, text) : null;
           const buildThemeColor = buildTheme ? THEME_VAR[buildTheme] : null;
 
           return (
             <li
-              className={`item style-${styleName}${topShelfWeapon}${buildTheme ? " top-build-theme-match" : ""}${hidden}`}
+              className={`item style-${styleName}${topShelfTone}${topShelfWeapon}${buildTheme ? " top-build-theme-match" : ""}${hidden}`}
               key={text}
               style={buildThemeColor ? { "--item-build-color": buildThemeColor } : undefined}
             >

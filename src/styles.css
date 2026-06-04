@@ -11,6 +11,7 @@
   --dim: #868176;
   --shadow: rgba(0, 0, 0, 0.3);
   --c-top-shelf: #c7a45e;
+  --c-top-shelf-normal: #b2a793;
   --c-neutral: #a7a49c;
   --c-quality: #45c6bb;
   --c-strength: #d95b71;
@@ -442,11 +443,27 @@ ul {
   font-weight: 760;
 }
 
-.style-top-shelf,
-.top-shelf .style-top-shelf {
+.style-top-shelf {
   color: var(--c-top-shelf);
   font-weight: 760;
   text-shadow: 0 0 8px rgba(199, 164, 94, 0.28);
+}
+
+.top-shelf .style-top-shelf {
+  color: var(--c-top-shelf-normal);
+  text-shadow: none;
+}
+
+.top-shelf .top-shelf-normal {
+  color: var(--c-top-shelf-normal);
+}
+
+.top-shelf .top-shelf-elite {
+  color: #f0c86e;
+  font-weight: 830;
+  text-shadow:
+    0 0 8px rgba(240, 200, 110, 0.34),
+    0 1px 0 rgba(0, 0, 0, 0.55);
 }
 
 .group .top-shelf-weapon-match {
@@ -677,7 +694,7 @@ ul {
   min-width: 0;
   padding-left: 10px;
   border-left: 2px solid color-mix(in srgb, var(--c-top-shelf) 42%, transparent);
-  color: color-mix(in srgb, var(--text) 82%, var(--c-top-shelf));
+  color: var(--c-top-shelf-normal);
   font-size: 0.82rem;
   font-weight: 620;
   line-height: 1.35;
