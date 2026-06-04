@@ -36,6 +36,17 @@ function capRowText(row) {
   ].filter(Boolean).join(" ");
 }
 
+function getVisibleNote(note, query) {
+  if (!note) return null;
+
+  return {
+    ...note,
+    isSearchHidden: !normalizeText(
+      [note.title, ...(note.lines || [])].join(" ")
+    ).includes(query)
+  };
+}
+
 function groupCapRows(rows) {
   return rows.reduce((groups, row) => {
     const group = groups.find((current) => current.attribute === row.attribute);
@@ -67,14 +78,7 @@ function getVisibleSection(section, query) {
         ...row,
         isSearchHidden: !normalizeText(capRowText(row)).includes(query)
       }));
-    const note = section.note
-      ? {
-          ...section.note,
-          isSearchHidden: !normalizeText(
-            [section.note.title, ...(section.note.lines || [])].join(" ")
-          ).includes(query)
-        }
-      : null;
+    const note = getVisibleNote(section.note, query);
     const hasVisibleEntry = rows.some((row) => !row.isSearchHidden) || (note && !note.isSearchHidden);
 
     return { ...section, rows, note, isSearchHidden: !hasVisibleEntry };
@@ -89,9 +93,10 @@ function getVisibleSection(section, query) {
 
     return { ...group, items, isSearchHidden: !hasVisibleItem };
   });
-  const hasVisibleEntry = groups.some((group) => !group.isSearchHidden);
+  const note = getVisibleNote(section.note, query);
+  const hasVisibleEntry = groups.some((group) => !group.isSearchHidden) || (note && !note.isSearchHidden);
 
-  return { ...section, groups, isSearchHidden: !hasVisibleEntry };
+  return { ...section, groups, note, isSearchHidden: !hasVisibleEntry };
 }
 
 function buildTopShelfSet(sections) {
@@ -286,6 +291,7 @@ function TopShelfCard({ collapsed, onCollapse, section }) {
               />
             ))}
           </div>
+          {section.note ? <SectionNote className="top-shelf-note" note={section.note} /> : null}
         </>
       )}
     </InteractiveSection>
@@ -372,7 +378,7 @@ function CapsCard({ collapsed, onCollapse, section }) {
           </header>
           <div className="caps-table-wrap">
             <CapsTable rows={section.rows} />
-            {section.note ? <CapNote note={section.note} /> : null}
+            {section.note ? <SectionNote className="cap-note" note={section.note} /> : null}
           </div>
         </>
       )}
@@ -443,13 +449,15 @@ function CapsTable({ rows }) {
   );
 }
 
-function CapNote({ note }) {
+function SectionNote({ className, note }) {
   return (
-    <div className={`cap-note${note.isSearchHidden ? " search-hidden" : ""}`}>
+    <div className={`${className}${note.isSearchHidden ? " search-hidden" : ""}`}>
       <h3>{note.title}</h3>
-      {note.lines.map((line) => (
-        <p key={line}>{line}</p>
-      ))}
+      <div className="note-lines">
+        {note.lines.map((line) => (
+          <p key={line}>{line}</p>
+        ))}
+      </div>
     </div>
   );
 }

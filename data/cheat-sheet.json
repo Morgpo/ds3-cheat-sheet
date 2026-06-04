@@ -104,7 +104,16 @@
               "Undead Hunter Charm"
             ]
           }
-        ]
+        ],
+        "note": {
+          "title": "Reminders",
+          "lines": [
+            "Simple infused offhand gives passive FP regen.",
+            "Blessed infused offhand and Ethereal Oak Shield give passive HP regen.",
+            "Spell Buff scaling depends heavily on the catalyst. Check specific tools for exact caps.",
+            "Gain an extra spell slot at: 10/14/18/24/30/40/50/60/80/99 Attunement levels."
+          ]
+        }
       },
       {
         "id": "attribute-caps",
@@ -134,16 +143,7 @@
           { "attribute": "Luck", "use": "Damage scaling", "breakpoints": ["40", "60"] },
           { "attribute": "Luck", "use": "Status buildup", "breakpoints": ["20", "40", "50"] },
           { "attribute": "Luck", "use": "Item discovery", "breakpoints": ["Linear"] }
-        ],
-        "note": {
-          "title": "Reminders",
-          "lines": [
-            "Simple infused offhand gives passive FP regen.",
-            "Blessed infused offhand and Ethereal Oak Shield give passive HP regen.",
-            "Spell Buff scaling depends heavily on the catalyst. Check specific tools for exact caps.",
-            "Gain an extra spell slot at: 10/14/18/24/30/40/50/60/80/99 Attunement levels."
-          ]
-        }
+        ]
       }
     ],
     "main": [
