@@ -271,6 +271,7 @@ function App() {
         {(cheatSheet.sections.main || []).map((section) => (
           <SectionRenderer
             key={section.id}
+            collapseOnHeader
             collapsed={collapsedIds.has(section.id)}
             onCollapse={collapseSection}
             section={visibleSections.get(section.id)}
@@ -307,7 +308,7 @@ function SearchStatus({ query }) {
   );
 }
 
-function SectionRenderer({ collapsed, itemBuildThemes, onCollapse, section, topShelfWeapons }) {
+function SectionRenderer({ collapseOnHeader = false, collapsed, itemBuildThemes, onCollapse, section, topShelfWeapons }) {
   if (!section) return null;
 
   if (section.type === "caps") {
@@ -328,6 +329,7 @@ function SectionRenderer({ collapsed, itemBuildThemes, onCollapse, section, topS
 
   return (
     <BuildCard
+      collapseOnHeader={collapseOnHeader}
       collapsed={collapsed}
       onCollapse={onCollapse}
       section={section}
@@ -336,7 +338,7 @@ function SectionRenderer({ collapsed, itemBuildThemes, onCollapse, section, topS
   );
 }
 
-function InteractiveSection({ children, className, collapsed, onCollapse, section }) {
+function InteractiveSection({ children, className, collapseOnHeader = false, collapsed, onCollapse, section }) {
   const accent = THEME_VAR[section.theme] || THEME_VAR.neutral;
   const collapseCurrentSection = () => onCollapse(section.id);
 
@@ -348,17 +350,19 @@ function InteractiveSection({ children, className, collapsed, onCollapse, sectio
 
   return (
     <section
-      aria-label={`Hide ${section.title}`}
+      aria-label={collapseOnHeader ? undefined : `Hide ${section.title}`}
       aria-labelledby={`${section.id}-title`}
       className={`${className}${section.isSearchHidden ? " search-hidden" : ""}`}
       hidden={collapsed}
-      onClick={collapseCurrentSection}
-      onKeyDown={handleKeyDown}
+      onClick={collapseOnHeader ? undefined : collapseCurrentSection}
+      onKeyDown={collapseOnHeader ? undefined : handleKeyDown}
       style={{ "--accent": accent }}
-      tabIndex="0"
-      title={`Hide ${section.title}`}
+      tabIndex={collapseOnHeader ? undefined : "0"}
+      title={collapseOnHeader ? undefined : `Hide ${section.title}`}
     >
-      {children}
+      {typeof children === "function"
+        ? children({ collapseCurrentSection, handleKeyDown })
+        : children}
     </section>
   );
 }
@@ -390,7 +394,7 @@ function TopShelfCard({ collapsed, itemBuildThemes, onCollapse, section }) {
   );
 }
 
-function BuildCard({ collapsed, onCollapse, section, topShelfWeapons }) {
+function BuildCard({ collapseOnHeader, collapsed, onCollapse, section, topShelfWeapons }) {
   const cardClasses = [
     "board-card",
     ...(section.classes || [])
@@ -400,28 +404,41 @@ function BuildCard({ collapsed, onCollapse, section, topShelfWeapons }) {
     <InteractiveSection
       className={cardClasses}
       collapsed={collapsed}
+      collapseOnHeader={collapseOnHeader}
       onCollapse={onCollapse}
       section={section}
     >
-      <header className="card-head">
-        <div className="card-title-row">
-          <div className="build-title-lockup">
-            {section.abbrev ? <span className="build-badge">{section.abbrev}</span> : null}
-            <h2 id={`${section.id}-title`}>{section.title}</h2>
+      {({ collapseCurrentSection, handleKeyDown }) => (
+        <>
+          <header
+            aria-label={collapseOnHeader ? `Hide ${section.title}` : undefined}
+            className={`card-head${collapseOnHeader ? " card-head-clickable" : ""}`}
+            onClick={collapseOnHeader ? collapseCurrentSection : undefined}
+            onKeyDown={collapseOnHeader ? handleKeyDown : undefined}
+            role={collapseOnHeader ? "button" : undefined}
+            tabIndex={collapseOnHeader ? "0" : undefined}
+            title={collapseOnHeader ? `Hide ${section.title}` : undefined}
+          >
+            <div className="card-title-row">
+              <div className="build-title-lockup">
+                {section.abbrev ? <span className="build-badge">{section.abbrev}</span> : null}
+                <h2 id={`${section.id}-title`}>{section.title}</h2>
+              </div>
+            </div>
+            {section.description ? <p className="card-desc">{section.description}</p> : null}
+          </header>
+          <div className="card-groups">
+            {section.groups.map((group) => (
+              <ItemGroup
+                fallbackTheme={section.theme}
+                group={group}
+                key={group.title}
+                topShelfWeapons={topShelfWeapons}
+              />
+            ))}
           </div>
-        </div>
-        {section.description ? <p className="card-desc">{section.description}</p> : null}
-      </header>
-      <div className="card-groups">
-        {section.groups.map((group) => (
-          <ItemGroup
-            fallbackTheme={section.theme}
-            group={group}
-            key={group.title}
-            topShelfWeapons={topShelfWeapons}
-          />
-        ))}
-      </div>
+        </>
+      )}
     </InteractiveSection>
   );
 }

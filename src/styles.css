@@ -273,6 +273,19 @@ h1 {
   cursor: pointer;
 }
 
+.build-grid .board-card {
+  cursor: default;
+}
+
+.card-head-clickable {
+  cursor: pointer;
+}
+
+.card-head-clickable:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 70%, white);
+  outline-offset: 2px;
+}
+
 .top-shelf {
   --accent: var(--c-top-shelf);
   min-height: 100%;
