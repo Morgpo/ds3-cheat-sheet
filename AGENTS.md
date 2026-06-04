@@ -6,7 +6,8 @@ Use normal code editing tools and techniques - no need for anything fancy
 
 Make it pretty
 
-Do not do any web browsing - that's not working
+Web searching IS working - use it if you need to find something
+Web browsing IS NOT working - you can't access the rendered page, if you try to you'll probably get lost to the void
 
 Prefer simple solutions - don't overcomplicate things
 
