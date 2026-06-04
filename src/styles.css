@@ -453,6 +453,11 @@ ul {
   color: var(--c-top-shelf);
 }
 
+.top-shelf .top-build-theme-match {
+  color: var(--item-build-color);
+  text-shadow: none;
+}
+
 .style-neutral {
   color: var(--c-neutral);
 }

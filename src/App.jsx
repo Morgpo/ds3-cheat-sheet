@@ -147,6 +147,38 @@ function buildTopShelfWeaponSet(sections) {
   return new Set(topShelfItems);
 }
 
+function buildItemThemeMap(sections) {
+  const itemThemes = new Map();
+
+  function addItemTheme(key, theme) {
+    if (!key) return;
+    const themes = itemThemes.get(key) || new Set();
+    themes.add(theme);
+    itemThemes.set(key, themes);
+  }
+
+  sections.forEach((section) => {
+    (section.groups || []).forEach((group) => {
+      (group.items || []).forEach((item) => {
+        const text = itemText(item);
+        addItemTheme(normalizeWeaponName(text), section.theme);
+        addItemTheme(baseWeaponName(text), section.theme);
+      });
+    });
+  });
+
+  return itemThemes;
+}
+
+function getUniqueBuildTheme(itemThemes, text) {
+  const themes = new Set([
+    ...(itemThemes.get(normalizeWeaponName(text)) || []),
+    ...(itemThemes.get(baseWeaponName(text)) || [])
+  ]);
+
+  return themes.size === 1 ? [...themes][0] : null;
+}
+
 function flattenSections(sections) {
   return [
     ...(sections.feature || []),
@@ -162,6 +194,7 @@ function App() {
   const query = normalizeText(search);
   const allSections = useMemo(() => flattenSections(cheatSheet.sections), []);
   const topShelfWeapons = useMemo(() => buildTopShelfWeaponSet(cheatSheet.sections.feature || []), []);
+  const itemBuildThemes = useMemo(() => buildItemThemeMap(cheatSheet.sections.main || []), []);
   const visibleSections = useMemo(
     () => new Map(allSections.map((section) => [section.id, getVisibleSection(section, query)])),
     [allSections, query]
@@ -217,6 +250,7 @@ function App() {
             collapsed={collapsedIds.has(section.id)}
             onCollapse={collapseSection}
             section={visibleSections.get(section.id)}
+            itemBuildThemes={itemBuildThemes}
           />
         ))}
       </section>
@@ -261,7 +295,7 @@ function SearchStatus({ query }) {
   );
 }
 
-function SectionRenderer({ collapsed, onCollapse, section, topShelfWeapons }) {
+function SectionRenderer({ collapsed, itemBuildThemes, onCollapse, section, topShelfWeapons }) {
   if (!section) return null;
 
   if (section.type === "caps") {
@@ -272,6 +306,7 @@ function SectionRenderer({ collapsed, onCollapse, section, topShelfWeapons }) {
     return (
       <TopShelfCard
         collapsed={collapsed}
+        itemBuildThemes={itemBuildThemes}
         onCollapse={onCollapse}
         section={section}
         topShelfWeapons={topShelfWeapons}
@@ -316,7 +351,7 @@ function InteractiveSection({ children, className, collapsed, onCollapse, sectio
   );
 }
 
-function TopShelfCard({ collapsed, onCollapse, section }) {
+function TopShelfCard({ collapsed, itemBuildThemes, onCollapse, section }) {
   return (
     <InteractiveSection
       className="top-shelf"
@@ -333,6 +368,7 @@ function TopShelfCard({ collapsed, onCollapse, section }) {
             className="top-group"
             fallbackTheme={section.theme}
             group={group}
+            itemBuildThemes={itemBuildThemes}
             key={group.title}
           />
         ))}
@@ -378,7 +414,7 @@ function BuildCard({ collapsed, onCollapse, section, topShelfWeapons }) {
   );
 }
 
-function ItemGroup({ className = "group", fallbackTheme, group, topShelfWeapons = new Set() }) {
+function ItemGroup({ className = "group", fallbackTheme, group, itemBuildThemes, topShelfWeapons = new Set() }) {
   return (
     <div className={`${className}${group.isSearchHidden ? " search-hidden" : ""}`}>
       <h3>{group.title}</h3>
@@ -390,9 +426,15 @@ function ItemGroup({ className = "group", fallbackTheme, group, topShelfWeapons 
           const isTopShelfWeapon = topShelfWeapons.has(normalizeWeaponName(text)) || topShelfWeapons.has(baseWeaponName(text));
           const hidden = item.isSearchHidden ? " search-hidden" : "";
           const topShelfWeapon = isTopShelfWeapon ? " top-shelf-weapon-match" : "";
+          const buildTheme = itemBuildThemes ? getUniqueBuildTheme(itemBuildThemes, text) : null;
+          const buildThemeColor = buildTheme ? THEME_VAR[buildTheme] : null;
 
           return (
-            <li className={`item style-${styleName}${topShelfWeapon}${hidden}`} key={text}>
+            <li
+              className={`item style-${styleName}${topShelfWeapon}${buildTheme ? " top-build-theme-match" : ""}${hidden}`}
+              key={text}
+              style={buildThemeColor ? { "--item-build-color": buildThemeColor } : undefined}
+            >
               {text}
             </li>
           );
