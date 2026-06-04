@@ -7,10 +7,15 @@ const THEME_VAR = {
   quality: "var(--c-quality)",
   strength: "var(--c-strength)",
   dexterity: "var(--c-dexterity)",
-  sorcery: "var(--c-sorcery)",
-  faith: "var(--c-faith)",
-  "pyromancy-dark": "var(--c-pyromancy-dark)",
-  "luck-bleed": "var(--c-luck-bleed)",
+  sorcerer: "var(--c-sorcerer)",
+  pyromancer: "var(--c-pyromancer)",
+  miracle: "var(--c-miracle)",
+  "dark-melee": "var(--c-dark-melee)",
+  "bleed-luck": "var(--c-bleed-luck)",
+  "hollow-luck": "var(--c-hollow-luck)",
+  "battle-mage": "var(--c-battle-mage)",
+  paladin: "var(--c-paladin)",
+  "glass-cannon": "var(--c-glass-cannon)",
   armor: "var(--c-armor)",
   consumables: "var(--c-consumables)",
   caps: "var(--c-caps)"
@@ -315,7 +320,10 @@ function BuildCard({ collapsed, onCollapse, section, topShelfItems }) {
         <>
           <header className="card-head">
             <div className="card-title-row">
-              <h2 id={`${section.id}-title`}>{section.title}</h2>
+              <div className="build-title-lockup">
+                {section.abbrev ? <span className="build-badge">{section.abbrev}</span> : null}
+                <h2 id={`${section.id}-title`}>{section.title}</h2>
+              </div>
               <CollapseButton onCollapse={hideSection} section={section} />
             </div>
             {section.description ? <p className="card-desc">{section.description}</p> : null}

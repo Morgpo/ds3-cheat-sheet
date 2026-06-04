@@ -12,13 +12,18 @@
   --shadow: rgba(0, 0, 0, 0.3);
   --c-top-shelf: #c7a45e;
   --c-neutral: #a7a49c;
-  --c-quality: #75a2b0;
-  --c-strength: #c16f58;
-  --c-dexterity: #78a978;
-  --c-sorcery: #8795bf;
-  --c-faith: #ccb95f;
-  --c-pyromancy-dark: #b97892;
-  --c-luck-bleed: #c76470;
+  --c-quality: #45c6bb;
+  --c-strength: #d95b71;
+  --c-dexterity: #79c27a;
+  --c-sorcerer: #8f9cff;
+  --c-pyromancer: #d56aa8;
+  --c-miracle: #72ccb8;
+  --c-dark-melee: #9d7cf4;
+  --c-bleed-luck: #d75d88;
+  --c-hollow-luck: #8fa3b5;
+  --c-battle-mage: #5fb6e8;
+  --c-paladin: #a9c6ff;
+  --c-glass-cannon: #ef5fb8;
   --c-armor: #aba9a1;
   --c-consumables: #91a66f;
   --c-caps: #b86a36;
@@ -229,9 +234,9 @@ h1 {
   background: linear-gradient(
     90deg,
     transparent,
-    color-mix(in srgb, var(--c-caps) 34%, var(--line-soft)) 12%,
-    color-mix(in srgb, var(--c-top-shelf) 24%, var(--line-soft)) 50%,
-    color-mix(in srgb, var(--c-neutral) 22%, var(--line-soft)) 88%,
+    color-mix(in srgb, var(--c-quality) 36%, var(--line-soft)) 12%,
+    color-mix(in srgb, var(--c-dark-melee) 34%, var(--line-soft)) 50%,
+    color-mix(in srgb, var(--c-glass-cannon) 30%, var(--line-soft)) 88%,
     transparent
   );
 }
@@ -277,6 +282,7 @@ h1 {
 
 .board-card {
   padding: 14px;
+  overflow: hidden;
 }
 
 .top-shelf:hover,
@@ -319,6 +325,42 @@ h1 {
 .card-head h2 {
   color: var(--accent);
   font-size: 1.18rem;
+}
+
+.board-card:not(.caps-card) .card-head {
+  position: relative;
+  margin: -2px -2px 12px;
+  padding: 10px 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--line-soft));
+  border-radius: 7px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 58%),
+    rgba(255, 255, 255, 0.018);
+}
+
+.build-title-lockup {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.build-badge {
+  flex: 0 0 auto;
+  min-width: 40px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 56%, rgba(238, 232, 219, 0.12));
+  border-radius: 7px;
+  color: color-mix(in srgb, var(--accent) 82%, white);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 24%, transparent), transparent),
+    rgba(12, 13, 12, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+  font-size: 0.65rem;
+  font-weight: 820;
+  line-height: 1;
 }
 
 .card-desc {
@@ -424,8 +466,7 @@ ul {
 }
 
 .style-top-shelf,
-.top-shelf .style-top-shelf,
-.board-card .top-pick-match {
+.top-shelf .style-top-shelf {
   color: var(--c-top-shelf);
   font-weight: 760;
   text-shadow: 0 0 8px rgba(199, 164, 94, 0.28);
@@ -447,20 +488,40 @@ ul {
   color: var(--c-dexterity);
 }
 
-.style-sorcery {
-  color: var(--c-sorcery);
+.style-sorcerer {
+  color: var(--c-sorcerer);
 }
 
-.style-faith {
-  color: var(--c-faith);
+.style-pyromancer {
+  color: var(--c-pyromancer);
 }
 
-.style-pyromancy-dark {
-  color: var(--c-pyromancy-dark);
+.style-miracle {
+  color: var(--c-miracle);
 }
 
-.style-luck-bleed {
-  color: var(--c-luck-bleed);
+.style-dark-melee {
+  color: var(--c-dark-melee);
+}
+
+.style-bleed-luck {
+  color: var(--c-bleed-luck);
+}
+
+.style-hollow-luck {
+  color: var(--c-hollow-luck);
+}
+
+.style-battle-mage {
+  color: var(--c-battle-mage);
+}
+
+.style-paladin {
+  color: var(--c-paladin);
+}
+
+.style-glass-cannon {
+  color: var(--c-glass-cannon);
 }
 
 .style-armor {
@@ -777,6 +838,14 @@ ul {
   .compact-card .card-groups {
     grid-template-columns: 1fr;
     gap: 13px;
+  }
+
+  .build-title-lockup {
+    gap: 8px;
+  }
+
+  .build-badge {
+    min-width: 38px;
   }
 
   .top-shelf-note .note-lines {

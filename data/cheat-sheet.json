@@ -174,10 +174,10 @@
     ],
     "main": [
       {
-        "id": "quality-knight",
+        "id": "quality",
         "type": "card",
-        "title": "Quality Knight",
-        "description": "Flexible melee lane for straight swords, greatswords, and boss weapons that stay strong across most PvE fights.",
+        "title": "Quality Build",
+        "description": "Flexible STR/DEX weapon master for refined weapons, boss swords, and clean melee fundamentals.",
         "theme": "quality",
         "icon": "sword",
         "abbrev": "QLT",
@@ -185,34 +185,42 @@
           {
             "title": "Weapons",
             "items": [
-              "Lothric Knight Sword",
-              "Black Knight Sword",
+              "Refined Lothric Knight Sword",
               "Claymore",
+              "Black Knight Sword",
               "Hollowslayer Greatsword",
               "Wolf Knight's Greatsword",
-              "Farron Greatsword",
-              "Profaned Greatsword",
               "Ringed Knight Straight Sword",
-              "Gotthard Twinswords",
               "Gael's Greatsword",
-              "Ringed Knight Paired Greatswords"
+              "Profaned Greatsword"
             ]
           },
           {
-            "title": "Rings",
-            "items": ["Leo Ring", "Hornet Ring", "Lloyd's Sword Ring"]
+            "title": "Catalysts / Tools",
+            "items": ["Black Knight Shield", "Grass Crest Shield", "Blessed Caestus", "Lothric War Banner"]
           },
           {
-            "title": "Extras",
-            "items": ["Lothric War Banner", "Pontiff Knight Curved Sword"]
+            "title": "Spells / Buffs",
+            "items": ["Gold Pine Resin", "Human Pine Resin", "Charcoal Pine Resin", "Rotten Pine Resin"]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Ring of Favor +3",
+              "Prisoner's Chain",
+              "Chloranthy Ring +3",
+              "Lloyd's Sword Ring",
+              "Knight's Ring",
+              "Hunter's Ring"
+            ]
           }
         ]
       },
       {
-        "id": "strength-bonk",
+        "id": "strength",
         "type": "card",
-        "title": "Strength Bonk",
-        "description": "Slow heavy hits, stagger pressure, trades, and high-poise tank play.",
+        "title": "Strength Build",
+        "description": "Heavy-hitter bruiser for great hammers, ultra weapons, staggers, and trading through PvE pressure.",
         "theme": "strength",
         "icon": "hammer",
         "abbrev": "STR",
@@ -220,32 +228,42 @@
           {
             "title": "Weapons",
             "items": [
-              "Exile Greatsword",
-              "Great Club",
-              "Vordt's Great Hammer",
-              "Yhorm's Great Machete",
+              "Heavy Great Club",
+              "Heavy Splitleaf Greatsword",
+              "Ledo's Great Hammer",
               "Dragonslayer Greataxe",
               "Fume Ultra Greatsword",
-              "Ledo's Great Hammer",
-              "Cathedral Knight Greatsword",
-              "Black Knight Greataxe",
-              "Great Mace",
-              "Splitleaf Greatsword",
-              "Millwood Battle Axe",
-              "Greatsword"
+              "Vordt's Great Hammer",
+              "Yhorm's Great Machete",
+              "Exile Greatsword"
             ]
           },
           {
+            "title": "Catalysts / Tools",
+            "items": ["Grass Crest Shield", "Blessed Caestus", "Black Knight Shield", "Lothric War Banner"]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": ["Gold Pine Resin", "Gold Pine Bundle", "Human Pine Resin", "Budding Green Blossom"]
+          },
+          {
             "title": "Rings",
-            "items": ["Knight's Ring", "Havel's Ring +3", "Ring of Steel Protection +3"]
+            "items": [
+              "Havel's Ring +3",
+              "Ring of Favor +3",
+              "Prisoner's Chain",
+              "Chloranthy Ring +3",
+              "Knight's Ring",
+              "Ring of Steel Protection +3"
+            ]
           }
         ]
       },
       {
-        "id": "dexterity-dps",
+        "id": "dexterity",
         "type": "card",
-        "title": "Dexterity DPS",
-        "description": "Fast multi-hit weapons that stack buffs and shred bosses through repeated pressure.",
+        "title": "Dexterity Build",
+        "description": "Fast, technical melee build for sharp weapons, rapid hits, aggressive dodging, and boss DPS.",
         "theme": "dexterity",
         "icon": "blade",
         "abbrev": "DEX",
@@ -253,43 +271,43 @@
           {
             "title": "Weapons",
             "items": [
-              "Sellsword Twinblades",
-              "Warden Twinblades",
-              "Onikiri and Ubadachi",
-              "Washing Pole",
-              "Chaos Blade",
-              "Astora Greatsword",
-              "Lothric Knight Greatsword",
-              "Crow Quills",
-              "Frayed Blade",
-              "Great Corvian Scythe",
-              "Murakumo",
+              "Sharp Sellsword Twinblades",
               "Sharp Lothric Knight Sword",
-              "Pontiff Knight Curved Sword"
+              "Onikiri and Ubadachi",
+              "Frayed Blade",
+              "Washing Pole",
+              "Crow Quills",
+              "Murakumo",
+              "Astora Greatsword"
             ]
+          },
+          {
+            "title": "Catalysts / Tools",
+            "items": ["Old Wolf Curved Sword", "Grass Crest Shield", "Blessed Caestus", "Simple Caestus"]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": ["Carthus Rouge", "Gold Pine Resin", "Gold Pine Bundle", "Human Pine Resin"]
           },
           {
             "title": "Rings",
             "items": [
-              "Pontiff's Right Eye",
               "Hunter's Ring",
+              "Pontiff's Right Eye",
               "Lloyd's Sword Ring",
-              "Pontiff's Left Eye",
+              "Ring of Favor +3",
+              "Chloranthy Ring +3",
               "Carthus Milkring"
             ]
-          },
-          {
-            "title": "Extras",
-            "items": ["Old Wolf Curved Sword"]
           }
         ]
       },
       {
-        "id": "intelligence-sorcery",
+        "id": "sorcerer",
         "type": "card",
-        "title": "Intelligence Sorcery",
-        "description": "Ranged spell damage with a light backup weapon and caster gear for safe boss control.",
-        "theme": "sorcery",
+        "title": "Pure Sorcerer",
+        "description": "Long-range INT caster using high spell buff, spacing, and burst sorceries before enemies can close.",
+        "theme": "sorcerer",
         "icon": "staff",
         "abbrev": "INT",
         "groups": [
@@ -297,107 +315,53 @@
             "title": "Weapons",
             "items": [
               "Moonlight Greatsword",
-              "Greatsword of Judgment",
+              "Crystal Lothric Knight Sword",
               "Crystal Sage's Rapier",
               "Heysel Pick",
-              "Immolation Tinder",
-              "Friede's Great Scythe",
-              "Crystal Lothric Knight Sword"
+              "Aquamarine Dagger",
+              "Greatsword of Judgment"
             ]
           },
           {
-            "title": "Catalysts",
-            "items": ["Court Sorcerer's Staff", "Sage's Crystal Staff", "Heretic's Staff", "Izalith Staff"]
+            "title": "Catalysts / Tools",
+            "items": [
+              "Court Sorcerer's Staff",
+              "Sage's Crystal Staff",
+              "Heretic's Staff",
+              "Scholar's Candlestick",
+              "Witchtree Branch"
+            ]
           },
           {
-            "title": "Spells",
+            "title": "Spells / Buffs",
             "items": [
-              "Great Heavy Soul Arrow",
               "Crystal Soul Spear",
+              "Great Heavy Soul Arrow",
               "Homing Crystal Soulmass",
-              "Soul Stream",
               "Pestilent Mist",
               "Hidden Body",
-              "Great Soul Dregs"
-            ]
-          },
-          {
-            "title": "Rings",
-            "items": ["Young Dragon Ring", "Bellowing Dragoncrest Ring", "Magic Clutch Ring", "Sage Ring +2"]
-          },
-          {
-            "title": "Extras",
-            "items": ["Scholar's Candlestick", "Crown of Dusk", "Murky Longstaff"]
-          }
-        ]
-      },
-      {
-        "id": "faith-lightning",
-        "type": "card",
-        "title": "Faith Lightning",
-        "description": "Buffed melee, close-range lightning casts, sustain, and emergency survival tools.",
-        "theme": "faith",
-        "icon": "sun",
-        "abbrev": "FTH",
-        "groups": [
-          {
-            "title": "Weapons",
-            "items": [
-              "Sunlight Straight Sword",
-              "Dragonslayer Swordspear",
-              "Dragonslayer Spear",
-              "Lothric Knight Greatsword",
-              "Saint Bident",
-              "Crucifix of the Mad King",
-              "Wolnir's Holy Sword",
-              "Lightning Lothric Knight Sword",
-              "Rose of Ariandel",
-              "Lothric War Banner"
-            ]
-          },
-          {
-            "title": "Catalysts",
-            "items": [
-              "Yorshka's Chime",
-              "Canvas Talisman",
-              "Saint's Talisman",
-              "Sunless Talisman",
-              "Sacred Chime of Filianore"
-            ]
-          },
-          {
-            "title": "Miracles",
-            "items": [
-              "Lightning Blade",
-              "Darkmoon Blade",
-              "Sunlight Spear",
-              "Lightning Stake",
-              "Lightning Arrow",
-              "Dorhys' Gnawing",
-              "Tears of Denial",
-              "Sacred Oath",
-              "Lightning Storm",
-              "Bountiful Light"
+              "Soul Stream"
             ]
           },
           {
             "title": "Rings",
             "items": [
-              "Morne's Ring",
-              "Ring of the Sun's First Born",
-              "Lightning Clutch Ring",
-              "Priestess Ring",
-              "Sun Princess Ring"
+              "Bellowing Dragoncrest Ring",
+              "Young Dragon Ring",
+              "Magic Clutch Ring",
+              "Sage Ring +2",
+              "Lloyd's Sword Ring",
+              "Dusk Crown Ring"
             ]
           }
         ]
       },
       {
-        "id": "pyromancy-dark",
+        "id": "pyromancer",
         "type": "card",
-        "title": "Pyromancy / Dark",
-        "description": "Fire and dark damage coverage with chaos/dark weapons for enemies that resist one element.",
-        "theme": "pyromancy-dark",
+        "title": "Pyromancer",
+        "description": "Versatile INT/FTH caster with fire, dark, and chaos melee coverage for most resist profiles.",
+        "theme": "pyromancer",
         "icon": "flame",
         "abbrev": "PYR",
         "groups": [
@@ -410,82 +374,378 @@
               "Chaos Lothric Knight Sword",
               "Dark Lothric Knight Sword",
               "Chaos Dagger",
-              "Dark Claymore",
-              "Crucifix of the Mad King",
-              "Murky Hand Scythe",
               "Dark Astora Greatsword",
-              "Dark Murakumo"
+              "Murky Hand Scythe"
             ]
           },
           {
-            "title": "Catalysts",
+            "title": "Catalysts / Tools",
             "items": [
               "Pyromancy Flame",
               "Pyromancer's Parting Flame",
               "White Hair Talisman",
-              "Izalith Staff",
-              "Murky Longstaff",
-              "Caitha's Chime"
+              "Saint-tree Bellvine",
+              "Izalith Staff"
             ]
           },
           {
-            "title": "Pyromancies",
+            "title": "Spells / Buffs",
             "items": [
-              "Great Chaos Fire Orb",
               "Chaos Bed Vestiges",
-              "Black Fire Orb",
+              "Great Chaos Fire Orb",
               "Black Flame",
-              "Profaned Flame",
+              "Black Fire Orb",
               "Rapport",
-              "Carthus Flame Arc",
               "Black Serpent",
               "Seething Chaos"
             ]
           },
           {
             "title": "Rings",
-            "items": ["Great Swamp Ring", "Witch's Ring", "Fire Clutch Ring", "Dark Clutch Ring", "Sage Ring +2"]
-          },
-          {
-            "title": "Extras",
-            "items": ["Blindfold Mask"]
-          },
-          {
-            "title": "Dark Spells",
-            "items": ["Great Soul Dregs", "Affinity", "Dark Edge", "Lifehunt Scythe"]
+            "items": [
+              "Witch's Ring",
+              "Great Swamp Ring",
+              "Sage Ring +2",
+              "Fire Clutch Ring",
+              "Dark Clutch Ring",
+              "Ring of Favor +3"
+            ]
           }
         ]
       },
       {
-        "id": "luck-bleed-hollow",
+        "id": "miracle",
         "type": "card",
-        "title": "Luck / Bleed / Hollow",
-        "description": "Status pressure with bleed, hollow scaling, and fast weapons that reward repeated hits.",
-        "theme": "luck-bleed",
+        "title": "Miracle Build",
+        "description": "Faith-based fighter with lightning damage, healing, weapon buffs, and late-game miracle payoff.",
+        "theme": "miracle",
+        "icon": "sun",
+        "abbrev": "FTH",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Sunlight Straight Sword",
+              "Lightning Lothric Knight Sword",
+              "Saint Bident",
+              "Dragonslayer Swordspear",
+              "Blessed Lothric Knight Greatsword",
+              "Rose of Ariandel",
+              "Dragonslayer Axe"
+            ]
+          },
+          {
+            "title": "Catalysts / Tools",
+            "items": [
+              "Yorshka's Chime",
+              "Canvas Talisman",
+              "Saint's Talisman",
+              "Sacred Chime of Filianore"
+            ]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": [
+              "Sunlight Spear",
+              "Lightning Stake",
+              "Lightning Arrow",
+              "Lightning Blade",
+              "Darkmoon Blade",
+              "Tears of Denial",
+              "Sacred Oath",
+              "Dorhys' Gnawing"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Ring of the Sun's First Born",
+              "Morne's Ring",
+              "Lightning Clutch Ring",
+              "Sage Ring +2",
+              "Priestess Ring",
+              "Sun Princess Ring"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dark-melee",
+        "type": "card",
+        "title": "Dark Build",
+        "description": "PvP-oriented INT/FTH melee hybrid using Dark and Chaos scaling for strong pressure and split damage.",
+        "theme": "dark-melee",
+        "icon": "moon",
+        "abbrev": "DRK",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Dark Lothric Knight Sword",
+              "Dark Claymore",
+              "Dark Astora Greatsword",
+              "Onyx Blade",
+              "Crucifix of the Mad King",
+              "Murky Hand Scythe",
+              "Dark Gotthard Twinswords",
+              "Dark Harald Curved Greatsword"
+            ]
+          },
+          {
+            "title": "Catalysts / Tools",
+            "items": ["Caitha's Chime", "Izalith Staff", "Sunless Talisman", "Pyromancer's Parting Flame", "Saint-tree Bellvine"]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": ["Dark Blade", "Black Flame", "Black Fire Orb", "Great Soul Dregs", "Affinity", "Lifehunt Scythe", "Dorhys' Gnawing"]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Dark Clutch Ring",
+              "Sage Ring +2",
+              "Ring of Favor +3",
+              "Prisoner's Chain",
+              "Bellowing Dragoncrest Ring",
+              "Witch's Ring"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "bleed-luck",
+        "type": "card",
+        "title": "Bleed/Luck Build",
+        "description": "Status attacker using fast weapons, bleed buildup, and repeated-hit pressure to chunk enemy health.",
+        "theme": "bleed-luck",
         "icon": "drop",
         "abbrev": "LCK",
         "groups": [
           {
             "title": "Weapons",
             "items": [
-              "Anri's Straight Sword",
-              "Hollow Warden Twinblades",
-              "Hollow Carthus Curved Sword",
+              "Blood Warden Twinblades",
               "Bandit's Knife",
               "Barbed Straight Sword",
               "Great Corvian Scythe",
               "Onikiri and Ubadachi",
-              "Hollow Sellsword Twinblades",
-              "Man-Grub's Staff",
-              "Storyteller's Staff",
               "Bloodlust",
-              "Notched Whip",
+              "Flamberge",
               "Spiked Mace"
             ]
           },
           {
+            "title": "Catalysts / Tools",
+            "items": ["Hollow Caestus", "Storyteller's Staff", "Man-Grub's Staff", "Notched Whip"]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": ["Carthus Rouge", "Carthus Beacon", "Power Within", "Human Pine Resin", "Dorhys' Gnawing"]
+          },
+          {
             "title": "Rings",
-            "items": ["Carthus Milkring", "Pontiff's Right Eye", "Bloodbite Ring"]
+            "items": [
+              "Pontiff's Right Eye",
+              "Carthus Milkring",
+              "Ring of Favor +3",
+              "Chloranthy Ring +3",
+              "Bloodbite Ring",
+              "Lloyd's Sword Ring"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hollow-luck",
+        "type": "card",
+        "title": "Hollow Build",
+        "description": "Luck hybrid that uses Hollow scaling, free Luck from Hollow gear, and buffable bleed weapons.",
+        "theme": "hollow-luck",
+        "icon": "skull",
+        "abbrev": "HOL",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Hollow Warden Twinblades",
+              "Hollow Sellsword Twinblades",
+              "Hollow Carthus Curved Sword",
+              "Hollow Flamberge",
+              "Hollow Onikiri and Ubadachi",
+              "Anri's Straight Sword",
+              "Hollow Great Corvian Scythe",
+              "Hollow Bandit's Knife"
+            ]
+          },
+          {
+            "title": "Catalysts / Tools",
+            "items": ["Hollow Caestus", "Hollow Parrying Dagger", "Man-Grub's Staff", "Storyteller's Staff"]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": ["Carthus Rouge", "Gold Pine Resin", "Human Pine Resin", "Carthus Beacon", "Power Within"]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Pontiff's Right Eye",
+              "Ring of Favor +3",
+              "Prisoner's Chain",
+              "Chloranthy Ring +3",
+              "Lloyd's Sword Ring",
+              "Carthus Milkring"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "battle-mage",
+        "type": "card",
+        "title": "Battle Mage",
+        "description": "Magic knight that mixes melee pressure with sorcery buffs, utility casts, and crystal weapons.",
+        "theme": "battle-mage",
+        "icon": "wand",
+        "abbrev": "MAG",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Moonlight Greatsword",
+              "Greatsword of Judgment",
+              "Friede's Great Scythe",
+              "Heysel Pick",
+              "Immolation Tinder",
+              "Crystal Claymore",
+              "Crystal Lothric Knight Sword",
+              "Aquamarine Dagger"
+            ]
+          },
+          {
+            "title": "Catalysts / Tools",
+            "items": [
+              "Court Sorcerer's Staff",
+              "Sage's Crystal Staff",
+              "Heysel Pick",
+              "Immolation Tinder",
+              "Scholar's Candlestick",
+              "Witchtree Branch"
+            ]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": [
+              "Crystal Magic Weapon",
+              "Great Heavy Soul Arrow",
+              "Farron Flashsword",
+              "Soul Greatsword",
+              "Homing Crystal Soulmass",
+              "Hidden Body",
+              "Pestilent Mist"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Bellowing Dragoncrest Ring",
+              "Young Dragon Ring",
+              "Sage Ring +2",
+              "Magic Clutch Ring",
+              "Ring of Favor +3",
+              "Prisoner's Chain"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "paladin",
+        "type": "card",
+        "title": "Paladin Build",
+        "description": "Tanky STR/FTH holy warrior with heavy weapons, lightning buffs, healing, and survivability tools.",
+        "theme": "paladin",
+        "icon": "shield",
+        "abbrev": "PAL",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Blessed Lothric Knight Greatsword",
+              "Dragonslayer Greataxe",
+              "Morne's Great Hammer",
+              "Sunlight Straight Sword",
+              "Dragonslayer Axe",
+              "Heavy Claymore",
+              "Wolnir's Holy Sword"
+            ]
+          },
+          {
+            "title": "Catalysts / Tools",
+            "items": ["Canvas Talisman", "Sunlight Talisman", "Yorshka's Chime", "Rose of Ariandel", "Sacred Chime of Filianore"]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": ["Lightning Blade", "Darkmoon Blade", "Sacred Oath", "Tears of Denial", "Great Heal", "Bountiful Light", "Lightning Stake"]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Ring of the Sun's First Born",
+              "Morne's Ring",
+              "Lightning Clutch Ring",
+              "Havel's Ring +3",
+              "Ring of Favor +3",
+              "Priestess Ring"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "glass-cannon",
+        "type": "card",
+        "title": "Glass Cannon Build",
+        "description": "Maximum offense and minimum safety for burst damage, low equip load, and perfect-dodge boss melts.",
+        "theme": "glass-cannon",
+        "icon": "burst",
+        "abbrev": "DPS",
+        "groups": [
+          {
+            "title": "Weapons",
+            "items": [
+              "Sharp Sellsword Twinblades",
+              "Sharp Warden Twinblades",
+              "Chaos Dagger",
+              "Dragonslayer Greataxe",
+              "Court Sorcerer's Staff",
+              "Sage's Crystal Staff",
+              "Demon's Scar",
+              "Yorshka's Chime"
+            ]
+          },
+          {
+            "title": "Catalysts / Tools",
+            "items": ["Scholar's Candlestick", "Lothric War Banner", "Old Wolf Curved Sword", "Morion Blade", "Saint-tree Bellvine"]
+          },
+          {
+            "title": "Spells / Buffs",
+            "items": [
+              "Crystal Soul Spear",
+              "Chaos Bed Vestiges",
+              "Sunlight Spear",
+              "Darkmoon Blade",
+              "Lightning Blade",
+              "Power Within",
+              "Sacred Oath"
+            ]
+          },
+          {
+            "title": "Rings",
+            "items": [
+              "Red Tearstone Ring",
+              "Lloyd's Sword Ring",
+              "Flynn's Ring",
+              "Pontiff's Right Eye",
+              "Magic Clutch Ring",
+              "Lightning Clutch Ring"
+            ]
           }
         ]
       }
