@@ -21,8 +21,41 @@ const THEME_VAR = {
   caps: "var(--c-caps)"
 };
 
+const WEAPON_PREFIXES = [
+  "refined",
+  "heavy",
+  "sharp",
+  "crystal",
+  "chaos",
+  "dark",
+  "lightning",
+  "blessed",
+  "hollow",
+  "simple",
+  "raw",
+  "fire",
+  "deep",
+  "poison",
+  "blood"
+];
+
 function normalizeText(value) {
   return String(value ?? "").trim().toLowerCase();
+}
+
+function normalizeWeaponName(value) {
+  return normalizeText(value)
+    .replace(/\s*\(dlc\)\s*/g, " ")
+    .replace(/\s\+\d+\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function baseWeaponName(value) {
+  const name = normalizeWeaponName(value);
+  const prefix = WEAPON_PREFIXES.find((current) => name.startsWith(`${current} `));
+
+  return prefix ? name.slice(prefix.length + 1) : name;
 }
 
 function itemText(item) {
@@ -104,11 +137,12 @@ function getVisibleSection(section, query) {
   return { ...section, groups, note, isSearchHidden: !hasVisibleEntry };
 }
 
-function buildTopShelfSet(sections) {
+function buildTopShelfWeaponSet(sections) {
   const topShelfItems = sections
     .filter((section) => section.type === "top-shelf")
     .flatMap((section) => section.groups || [])
-    .flatMap((group) => group.items.map(itemText));
+    .filter((group) => normalizeText(group.title) === "the goats")
+    .flatMap((group) => group.items.map((item) => normalizeWeaponName(itemText(item))));
 
   return new Set(topShelfItems);
 }
@@ -127,7 +161,7 @@ function App() {
 
   const query = normalizeText(search);
   const allSections = useMemo(() => flattenSections(cheatSheet.sections), []);
-  const topShelfItems = useMemo(() => buildTopShelfSet(cheatSheet.sections.feature || []), []);
+  const topShelfWeapons = useMemo(() => buildTopShelfWeaponSet(cheatSheet.sections.feature || []), []);
   const visibleSections = useMemo(
     () => new Map(allSections.map((section) => [section.id, getVisibleSection(section, query)])),
     [allSections, query]
@@ -183,7 +217,6 @@ function App() {
             collapsed={collapsedIds.has(section.id)}
             onCollapse={collapseSection}
             section={visibleSections.get(section.id)}
-            topShelfItems={topShelfItems}
           />
         ))}
       </section>
@@ -195,7 +228,7 @@ function App() {
             collapsed={collapsedIds.has(section.id)}
             onCollapse={collapseSection}
             section={visibleSections.get(section.id)}
-            topShelfItems={topShelfItems}
+            topShelfWeapons={topShelfWeapons}
           />
         ))}
       </section>
@@ -207,7 +240,6 @@ function App() {
             collapsed={collapsedIds.has(section.id)}
             onCollapse={collapseSection}
             section={visibleSections.get(section.id)}
-            topShelfItems={topShelfItems}
           />
         ))}
       </section>
@@ -229,7 +261,7 @@ function SearchStatus({ query }) {
   );
 }
 
-function SectionRenderer({ collapsed, onCollapse, section, topShelfItems }) {
+function SectionRenderer({ collapsed, onCollapse, section, topShelfWeapons }) {
   if (!section) return null;
 
   if (section.type === "caps") {
@@ -242,7 +274,7 @@ function SectionRenderer({ collapsed, onCollapse, section, topShelfItems }) {
         collapsed={collapsed}
         onCollapse={onCollapse}
         section={section}
-        topShelfItems={topShelfItems}
+        topShelfWeapons={topShelfWeapons}
       />
     );
   }
@@ -252,7 +284,7 @@ function SectionRenderer({ collapsed, onCollapse, section, topShelfItems }) {
       collapsed={collapsed}
       onCollapse={onCollapse}
       section={section}
-      topShelfItems={topShelfItems}
+      topShelfWeapons={topShelfWeapons}
     />
   );
 }
@@ -310,7 +342,7 @@ function TopShelfCard({ collapsed, onCollapse, section }) {
   );
 }
 
-function BuildCard({ collapsed, onCollapse, section, topShelfItems }) {
+function BuildCard({ collapsed, onCollapse, section, topShelfWeapons }) {
   const cardClasses = [
     "board-card",
     ...(section.classes || [])
@@ -338,7 +370,7 @@ function BuildCard({ collapsed, onCollapse, section, topShelfItems }) {
             fallbackTheme={section.theme}
             group={group}
             key={group.title}
-            topShelfItems={topShelfItems}
+            topShelfWeapons={topShelfWeapons}
           />
         ))}
       </div>
@@ -346,7 +378,7 @@ function BuildCard({ collapsed, onCollapse, section, topShelfItems }) {
   );
 }
 
-function ItemGroup({ className = "group", fallbackTheme, group, topShelfItems = new Set() }) {
+function ItemGroup({ className = "group", fallbackTheme, group, topShelfWeapons = new Set() }) {
   return (
     <div className={`${className}${group.isSearchHidden ? " search-hidden" : ""}`}>
       <h3>{group.title}</h3>
@@ -355,12 +387,12 @@ function ItemGroup({ className = "group", fallbackTheme, group, topShelfItems = 
           const value = item.value ?? item;
           const text = itemText(value);
           const styleName = itemStyle(value, fallbackTheme);
-          const isTopPick = topShelfItems.has(text);
+          const isTopShelfWeapon = topShelfWeapons.has(normalizeWeaponName(text)) || topShelfWeapons.has(baseWeaponName(text));
           const hidden = item.isSearchHidden ? " search-hidden" : "";
-          const topPick = isTopPick ? " top-pick-match" : "";
+          const topShelfWeapon = isTopShelfWeapon ? " top-shelf-weapon-match" : "";
 
           return (
-            <li className={`item style-${styleName}${topPick}${hidden}`} key={text}>
+            <li className={`item style-${styleName}${topShelfWeapon}${hidden}`} key={text}>
               {text}
             </li>
           );

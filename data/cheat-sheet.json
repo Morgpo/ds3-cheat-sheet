@@ -473,7 +473,7 @@
         "id": "dark-melee",
         "type": "card",
         "title": "Dark Build",
-        "description": "PvP-oriented INT/FTH melee hybrid using Dark and Chaos scaling for strong pressure and split damage.",
+        "description": "PvE-oriented INT/FTH melee hybrid using Dark and Chaos scaling for strong pressure and split damage.",
         "theme": "dark-melee",
         "icon": "moon",
         "abbrev": "DRK",

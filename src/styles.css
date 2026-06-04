@@ -449,6 +449,10 @@ ul {
   text-shadow: 0 0 8px rgba(199, 164, 94, 0.28);
 }
 
+.group .top-shelf-weapon-match {
+  color: var(--c-top-shelf);
+}
+
 .style-neutral {
   color: var(--c-neutral);
 }
