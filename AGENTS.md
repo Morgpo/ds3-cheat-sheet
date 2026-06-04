@@ -17,6 +17,6 @@ Ask questions for any ambiguities - especially in Plan Mode
 
 ---
 
-Top Shelf Picks and Attribute Caps are going to be refered to as the top section. The site should feel like there are two main sections, this top section and the builds section below it
+The site should feel like there are two main sections, the top section (Top Shelf Picks and Attribute Caps) and the builds section below it (builds)
 
 the top section data should be treated as complete, don't edit it but you can have the same entries in other sections
