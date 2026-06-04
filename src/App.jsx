@@ -259,15 +259,27 @@ function SectionRenderer({ collapsed, onCollapse, section, topShelfItems }) {
 
 function InteractiveSection({ children, className, collapsed, onCollapse, section }) {
   const accent = THEME_VAR[section.theme] || THEME_VAR.neutral;
+  const collapseCurrentSection = () => onCollapse(section.id);
+
+  function handleKeyDown(event) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    collapseCurrentSection();
+  }
 
   return (
     <section
+      aria-label={`Hide ${section.title}`}
       aria-labelledby={`${section.id}-title`}
       className={`${className}${section.isSearchHidden ? " search-hidden" : ""}`}
       hidden={collapsed}
+      onClick={collapseCurrentSection}
+      onKeyDown={handleKeyDown}
       style={{ "--accent": accent }}
+      tabIndex="0"
+      title={`Hide ${section.title}`}
     >
-      {children({ onCollapse: () => onCollapse(section.id) })}
+      {children}
     </section>
   );
 }
@@ -280,25 +292,20 @@ function TopShelfCard({ collapsed, onCollapse, section }) {
       onCollapse={onCollapse}
       section={section}
     >
-      {({ onCollapse: hideSection }) => (
-        <>
-          <header className="section-title">
-            <h2 id={`${section.id}-title`}>{section.title}</h2>
-            <CollapseButton onCollapse={hideSection} section={section} />
-          </header>
-          <div className="top-grid">
-            {section.groups.map((group) => (
-              <ItemGroup
-                className="top-group"
-                fallbackTheme={section.theme}
-                group={group}
-                key={group.title}
-              />
-            ))}
-          </div>
-          {section.note ? <SectionNote className="top-shelf-note" note={section.note} /> : null}
-        </>
-      )}
+      <header className="section-title">
+        <h2 id={`${section.id}-title`}>{section.title}</h2>
+      </header>
+      <div className="top-grid">
+        {section.groups.map((group) => (
+          <ItemGroup
+            className="top-group"
+            fallbackTheme={section.theme}
+            group={group}
+            key={group.title}
+          />
+        ))}
+      </div>
+      {section.note ? <SectionNote className="top-shelf-note" note={section.note} /> : null}
     </InteractiveSection>
   );
 }
@@ -316,30 +323,25 @@ function BuildCard({ collapsed, onCollapse, section, topShelfItems }) {
       onCollapse={onCollapse}
       section={section}
     >
-      {({ onCollapse: hideSection }) => (
-        <>
-          <header className="card-head">
-            <div className="card-title-row">
-              <div className="build-title-lockup">
-                {section.abbrev ? <span className="build-badge">{section.abbrev}</span> : null}
-                <h2 id={`${section.id}-title`}>{section.title}</h2>
-              </div>
-              <CollapseButton onCollapse={hideSection} section={section} />
-            </div>
-            {section.description ? <p className="card-desc">{section.description}</p> : null}
-          </header>
-          <div className="card-groups">
-            {section.groups.map((group) => (
-              <ItemGroup
-                fallbackTheme={section.theme}
-                group={group}
-                key={group.title}
-                topShelfItems={topShelfItems}
-              />
-            ))}
+      <header className="card-head">
+        <div className="card-title-row">
+          <div className="build-title-lockup">
+            {section.abbrev ? <span className="build-badge">{section.abbrev}</span> : null}
+            <h2 id={`${section.id}-title`}>{section.title}</h2>
           </div>
-        </>
-      )}
+        </div>
+        {section.description ? <p className="card-desc">{section.description}</p> : null}
+      </header>
+      <div className="card-groups">
+        {section.groups.map((group) => (
+          <ItemGroup
+            fallbackTheme={section.theme}
+            group={group}
+            key={group.title}
+            topShelfItems={topShelfItems}
+          />
+        ))}
+      </div>
     </InteractiveSection>
   );
 }
@@ -376,35 +378,16 @@ function CapsCard({ collapsed, onCollapse, section }) {
       onCollapse={onCollapse}
       section={section}
     >
-      {({ onCollapse: hideSection }) => (
-        <>
-          <header className="card-head">
-            <div className="card-title-row">
-              <h2 id={`${section.id}-title`}>{section.title}</h2>
-              <CollapseButton onCollapse={hideSection} section={section} />
-            </div>
-          </header>
-          <div className="caps-table-wrap">
-            <CapsTable rows={section.rows} />
-            {section.note ? <SectionNote className="cap-note" note={section.note} /> : null}
-          </div>
-        </>
-      )}
+      <header className="card-head">
+        <div className="card-title-row">
+          <h2 id={`${section.id}-title`}>{section.title}</h2>
+        </div>
+      </header>
+      <div className="caps-table-wrap">
+        <CapsTable rows={section.rows} />
+        {section.note ? <SectionNote className="cap-note" note={section.note} /> : null}
+      </div>
     </InteractiveSection>
-  );
-}
-
-function CollapseButton({ onCollapse, section }) {
-  return (
-    <button
-      aria-label={`Hide ${section.title}`}
-      className="collapse-button"
-      onClick={onCollapse}
-      title={`Hide ${section.title}`}
-      type="button"
-    >
-      <span aria-hidden="true">-</span>
-    </button>
   );
 }
 

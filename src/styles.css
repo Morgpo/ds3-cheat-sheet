@@ -268,6 +268,7 @@ h1 {
     linear-gradient(90deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 55%),
     var(--panel);
   box-shadow: 0 12px 28px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  cursor: pointer;
 }
 
 .top-shelf {
@@ -288,6 +289,12 @@ h1 {
 .top-shelf:hover,
 .board-card:hover {
   border-color: color-mix(in srgb, var(--accent) 46%, var(--line-soft));
+}
+
+.top-shelf:focus-visible,
+.board-card:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 70%, white);
+  outline-offset: 3px;
 }
 
 .section-title,
@@ -371,36 +378,6 @@ h1 {
   line-height: 1.35;
 }
 
-.collapse-button {
-  flex: 0 0 auto;
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--accent) 48%, var(--line-soft));
-  border-radius: 7px;
-  color: var(--accent);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent),
-    rgba(16, 17, 15, 0.82);
-  cursor: pointer;
-}
-
-.collapse-button span {
-  transform: translateY(-1px);
-  font-size: 1.08rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.collapse-button:hover {
-  border-color: color-mix(in srgb, var(--accent) 66%, white);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--accent) 22%, transparent), transparent),
-    rgba(24, 25, 22, 0.95);
-}
-
-.collapse-button:focus-visible,
 .dock-button:focus-visible,
 .drop-search:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--accent, var(--c-top-shelf)) 70%, white);
@@ -949,7 +926,6 @@ ul {
     margin-bottom: 8px;
   }
 
-  .collapse-button,
   .collapse-dock {
     display: none !important;
   }

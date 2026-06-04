@@ -19,4 +19,5 @@ Ask questions for any ambiguities - especially in Plan Mode
 
 The site should feel like there are two main sections, the top section (Top Shelf Picks and Attribute Caps) and the builds section below it (builds)
 
-the top section data should be treated as complete, don't edit it but you can have the same entries in other sections
+data is done! no more edits unless specifically asked for
+
