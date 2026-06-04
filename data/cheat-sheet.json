@@ -18,15 +18,20 @@
             "title": "THE GOATS",
             "items": [
               "Sellsword Twinblades",
+              "Lothric Knight Sword",
               "Lothric Knight Greatsword",
-              "Ledo's Great Hammer (DLC)",
               "Exile Greatsword",
               "Dragonslayer Greataxe",
+              "Ledo's Great Hammer (DLC)",
+              "Splitleaf Greatsword (DLC)",
+              "Black Knight Greataxe",
+              "Claymore",
+              "Astora Greatsword",
+              "Great Club",
               "Demon's Scar",
-              "Court Sorcerer Staff",
-              "Yorshka's Chime",
               "Frayed Blade (DLC)",
-              "Black Knight Sword"
+              "Court Sorcerer's Staff",
+              "Yorshka's Chime"
             ]
           },
           {
@@ -38,55 +43,71 @@
               "Ring of Steel Protection +3",
               "Havel's Ring +3",
               "Lloyd's Sword Ring",
-              "Hornet Ring",
-              "Clutch Rings",
+              "Lloyd's Shield Ring",
+              "Life Ring +3",
+              "Sun Princess Ring",
+              "Estus Ring",
               "Sage Ring +2",
-              "Estus Ring"
+              "Bellowing Dragoncrest Ring",
+              "Witch's Ring",
+              "Ring of the Sun's First Born",
+              "Covetous Gold Serpent Ring +3"
             ]
           },
           {
             "title": "SPELLS",
             "items": [
               "Chaos Bed Vestiges",
+              "Great Chaos Fire Orb",
+              "Black Flame",
               "Crystal Soul Spear",
               "Great Soul Dregs (DLC)",
               "Pestilent Mist",
               "Sunlight Spear",
-              "Black Flame Pyromancy",
-              "Great Chaos Fire Orb",
+              "Lightning Arrow (DLC)",
+              "Dorhys' Gnawing",
+              "Great Heavy Soul Arrow",
+              "Homing Crystal Soulmass",
+              "Tears of Denial",
               "Carthus Flame Arc",
               "Hidden Body",
-              "Great Heavy Soul Arrow"
+              "Rapport"
             ]
           },
           {
             "title": "OFFHAND",
             "items": [
+              "Literally any Torch",
               "Blessed Caestus +10",
-              "Ethereal Oak Shield +5 (DLC)",
-              "Grass Crest Shield +5",
               "Simple Caestus +10",
+              "Grass Crest Shield +5",
+              "Ethereal Oak Shield +5 (DLC)",
+              "Black Knight Shield +5",
+              "Lothric Knight Shield +10",
               "Shield of Want +5",
-              "Filianore’s Sacred Chime +5 (DLC)",
-              "Any Torch",
-              "Scholar’s Candlestick",
-              "Arbalest / Avelyn",
-              "Lothric War Banner +10 (DLC)"
+              "Scholar's Candlestick",
+              "Saint-tree Bellvine",
+              "Lothric War Banner +10 (DLC)",
+              "Sacred Chime of Filianore +5 (DLC)",
+              "Crystal Sage's Rapier"
             ]
           },
           {
             "title": "ARMOR",
             "items": [
               "Havel's Set",
+              "Lapp's Set (DLC)",
               "Black Iron Set",
               "Winged Knight Set",
-              "Lapp's Set (DLC)",
-              "Exile Set",
-              "Gundyr's Set",
               "Cathedral Knight Set",
-              "Harald Legion Set (DLC)",
+              "Gundyr's Set",
+              "Catarina Set",
+              "Exile Set",
               "Millwood Knight Set (DLC)",
-              "Black Knight Set"
+              "Harald Legion Set (DLC)",
+              "Black Knight Set",
+              "Iron Dragonslayer Set (DLC)",
+              "Smough's Set"
             ]
           },
           {
@@ -95,25 +116,28 @@
               "Ember",
               "Coiled Sword Fragment",
               "Budding Green Blossom",
-              "Resins & Bundles",
-              "Mossfruit",
+              "Gold Pine Resin",
+              "Purple Moss Clump",
+              "Blooming Purple Moss Clump",
+              "Human Pine Resin",
+              "Carthus Rouge",
+              "Undead Hunter Charm",
+              "Alluring Skull",
               "Divine Blessing",
               "Siegbrau",
-              "Bug Pellets",
-              "Black Firebombs",
-              "Undead Hunter Charm"
+              "Rusted Gold Coin"
             ]
           }
         ],
         "note": {
           "title": "Reminders",
           "lines": [
-            "Simple infused offhand gives passive FP regen.",
             "Blessed infused offhand and Ethereal Oak Shield give passive HP regen.",
-            "Spell Buff scaling depends heavily on the catalyst. Check specific tools for exact caps.",
-            "Gain an extra spell slot at: 10/14/18/24/30/40/50/60/80/99 Attunement levels.",
-            "Placeholders for additional reminders.",
-            "Placeholders for additional reminders."
+            "Simple infused offhand gives passive FP regen.",
+            "Equip load under 30% for Light Roll, under 70% for Medium Roll.",
+            "Gain an extra spell slot at: 10/14/18/24/30/40/50/60/80/99 Attunement.",
+            "Soul farming: Symbol of Avarice, Covetous Silver Serpent Ring, Shield of Want, and Mendicant’s Staff.",
+            "Item farming: Symbol of Avarice, Covetous Gold Serpent Ring, (2) Crystal Sage's Rapier, Rusted Gold Coin."
           ]
         }
       },
